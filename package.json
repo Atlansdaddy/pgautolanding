@@ -1,0 +1,14 @@
+{
+  "name": "pgautolanding",
+  "version": "1.0.0",
+  "private": true,
+  "description": "P.G. Auto Installs — Fleet Telematics Installation landing page",
+  "scripts": {
+    "start": "npx serve .",
+    "deploy": "wrangler pages deploy . --project-name=pgautolanding",
+    "deploy:prod": "wrangler pages deploy . --project-name=pgautolanding --branch=main"
+  },
+  "devDependencies": {
+    "wrangler": "^3.90.0"
+  }
+}
