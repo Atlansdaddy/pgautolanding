@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:developers.google.com)",
+      "WebFetch(domain:web.dev)",
+      "WebFetch(domain:developer.chrome.com)",
+      "WebFetch(domain:www.seroundtable.com)",
+      "WebFetch(domain:www.stanventures.com)",
+      "WebFetch(domain:www.brightlocal.com)",
+      "WebFetch(domain:support.google.com)",
+      "WebFetch(domain:developers.openai.com)",
+      "WebFetch(domain:www.w3.org)",
+      "WebFetch(domain:launchcodex.com)",
+      "WebFetch(domain:arxiv.org)"
+    ]
+  }
+}
