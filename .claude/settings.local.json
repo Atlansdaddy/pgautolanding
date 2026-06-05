@@ -33,7 +33,10 @@
       "WebFetch(domain:docs.npmjs.com)",
       "WebFetch(domain:cheatsheetseries.owasp.org)",
       "WebFetch(domain:www.digitalocean.com)",
-      "WebFetch(domain:www.cloudflare.com)"
+      "WebFetch(domain:www.cloudflare.com)",
+      "WebFetch(domain:www.joshwcomeau.com)",
+      "WebFetch(domain:www.nngroup.com)",
+      "WebFetch(domain:www.htmhell.dev)"
     ]
   }
 }
