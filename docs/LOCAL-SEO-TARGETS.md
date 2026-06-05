@@ -1,11 +1,11 @@
 # Local SEO — Target Geography & Location-Page Plan (✅ markets CONFIRMED 2026-06-05)
 
 > Feeds [SEO_GEO_GUIDELINES.md](./SEO_GEO_GUIDELINES.md) §7 and **Command 4 (Messaging & Content Architecture)**
-> + **Command 5 (Design)**. **Markets CONFIRMED by John (2026-06-05): 11 metros along the I-95 / Eastern
-> Seaboard corridor, NYC → Tampa.** All 11 fit GBP's ≤20 service-area limit. On-site location pages must each be
+> + **Command 5 (Design)**. **Markets CONFIRMED by John (2026-06-05): 12 metros along the I-95 / Eastern
+> Seaboard corridor, NYC → Tampa.** All 12 fit GBP's ≤20 service-area limit. On-site location pages must each be
 > substantive (real regional proof) — no thin "swap-the-city-name" doorway pages (§7).
 
-## The 11 confirmed metros (NYC → Tampa corridor)
+## The 12 confirmed metros (NYC → Tampa corridor)
 
 | # | State | Metro | Notes |
 |---|---|---|---|
@@ -15,13 +15,14 @@
 | 4 | DC·VA·MD | **Washington DC — "DMV"** (DC + Northern VA + suburban MD) | Government, facility-services, trade fleets |
 | 5 | MD | **Baltimore** | Port + distribution |
 | 6 | VA | **Richmond** | I-95 / I-64 crossroads |
-| 7 | NC | **Charlotte** (NC's largest metro) | Major freight / distribution hub. *Raleigh = optional #2 (Research Triangle) — confirm.* |
-| 8 | SC | **Charleston** | Port city; SC anchor |
-| 9 | FL | **Jacksonville** | Major FL logistics / port |
-| 10 | FL | **Orlando** | Central-FL fleets / service |
-| 11 | FL | **Tampa** | Gulf-coast FL fleets / port |
+| 7 | NC | **Charlotte** (NC's largest metro) | Major freight / distribution hub |
+| 8 | NC | **Raleigh** (Research Triangle) | NC #2; tech / fleet base |
+| 9 | SC | **Charleston** | Port city; SC anchor |
+| 10 | FL | **Jacksonville** | Major FL logistics / port |
+| 11 | FL | **Orlando** | Central-FL fleets / service |
+| 12 | FL | **Tampa** | Gulf-coast FL fleets / port |
 
-**One open sub-question:** NC — go with **Charlotte** (recommended, biggest), **Raleigh**, or **both**?
+**NC: ✅ RESOLVED — both Charlotte AND Raleigh** (John, 2026-06-05).
 
 *(Superseded the earlier Mid-Atlantic draft — Philadelphia / Lehigh Valley / Newark / Hampton Roads / Cocoa Beach
 are NOT in PG's confirmed list.)*

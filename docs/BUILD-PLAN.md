@@ -14,7 +14,8 @@ adversarial gate expanded. Business-observability command was considered and dec
 - **Command 1 — SEO/GEO compilation** → [x] **✅ LOCKED 2026-06-04**: [SEO_GEO_GUIDELINES.md](./SEO_GEO_GUIDELINES.md) (142 cited guidelines; decisions A–G resolved). Target geography → [LOCAL-SEO-TARGETS.md](./LOCAL-SEO-TARGETS.md). Parked: OEM/partner directories + review content (placeholders only).
 - **Command 2 — Architecture Blueprint** → [x] **✅ LOCKED 2026-06-05**: [COMMAND-2-ARCHITECTURE.md](./COMMAND-2-ARCHITECTURE.md) (monorepo · Workers Static Assets · TS/Hono-first, Rust deferred · 7 services · Hyperdrive→Neon+PostGIS · long jobs on existing DO droplets via Tunnel). Hosting cost-benefit → [COST-BENEFIT-HOSTING.md](./COST-BENEFIT-HOSTING.md).
 - **Command 3 — Security Design** → [x] **✅ LOCKED 2026-06-05**: [COMMAND-3-SECURITY.md](./COMMAND-3-SECURITY.md) (ASVS 5.0 L2 · OWASP Top 10:2025 · passkeys+password+TOTP · Argon2id-WASM · EdDSA JWT · RLS `SET LOCAL` · Workers Paid). Hosting cost-benefit → [COST-BENEFIT-HOSTING.md](./COST-BENEFIT-HOSTING.md).
-- **Command 4 — Messaging & Content Architecture** → ⏭️ **NEXT**.
+- **Command 4 — Messaging & Content Architecture** → [x] **✅ LOCKED 2026-06-05**: [COMMAND-4-MESSAGING.md](./COMMAND-4-MESSAGING.md) (core message · proof hierarchy w/o logos/stars · progressive quote form · ~8-page IA · 12 metros · full bilingual + extensible i18n). Markets → [LOCAL-SEO-TARGETS.md](./LOCAL-SEO-TARGETS.md).
+- **Command 5 — Design System & UX** (+ UI-Forensics) → ⏭️ **NEXT**.
 - **Command 2 — Architecture Blueprint** — service map, stacks-per-service, DRY/shared contracts, security touchpoints.
 - **Command 3 — Security Design** — threat model per surface, authN/Z, secrets, controls matrix, residual risk.
 - **Command 4 — Messaging & Content Architecture** 🆕 *(inserted before Design)* — homepage copy, proof

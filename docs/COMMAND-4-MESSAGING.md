@@ -1,8 +1,9 @@
-# Command 4 — Messaging & Content Architecture (PROPOSAL for review)
+# Command 4 — Messaging & Content Architecture (✅ APPROVED & LOCKED 2026-06-05)
 
-> **STATUS: PROPOSAL — NOT APPROVED. No code/design yet.** Defines *what the site says and how it's organized*
-> so Command 5 (Design) serves the message. **Scope:** messaging + IA now; **per-location research agents
-> DEFERRED** (markets just confirmed — see [LOCAL-SEO-TARGETS.md](./LOCAL-SEO-TARGETS.md)). **U1:** grounded in
+> **STATUS: ✅ APPROVED 2026-06-05 (John). No code/design yet.** Governs Command 5 (Design). **Decisions:**
+> 12 metros (Charlotte + Raleigh) · progressive quote form · **full bilingual at launch on an extensible i18n
+> framework** · ~8-page IA approved. **Scope:** messaging + IA; **per-location research agents DEFERRED**
+> (markets confirmed — [LOCAL-SEO-TARGETS.md](./LOCAL-SEO-TARGETS.md)). **U1:** grounded in
 > live June 2026 B2B lead-gen / conversion-copy research (cited in notes). Every claim is tagged to the
 > **Command 0 Claims Taxonomy** — only **Proven / Customer-verifiable** ship as fact.
 
@@ -46,9 +47,10 @@ says those surface signals are fading anyway — **structural/substantive credib
 - **Secondary (subordinate):** **"Build Your Protection"** — the interactive three.js risk-profile tool
   (`build-your-protection.html`) as a soft, engaging entry; and **"See an Install"** (real photos / 3D explorer).
 - **Phone, tap-to-call, in the persistent header** — itself a B2B trust signal (real humans answer).
-- **Form:** short for a basic quote (**≤6 fields**); if we qualify up front (fleet size · vehicle types ·
-  platform), use a **multi-step** form (research: multi-step + a qualifying step lifts completion *and* lead
-  quality for B2B). Inline validation. *(Decision §I.)*
+- **Form — DECIDED: progressive (quick by default, optional granularity).** Minimal **required** fields
+  (name · company · contact + brief message) so it's low-friction; plus **OPTIONAL** qualifiers the user can add
+  but isn't required to — **fleet size · vehicle types · platform (Motive/Samsara/Netradyne)**. Inline validation;
+  optional fields can be a reveal/step that doesn't gate submission. Best of both: easy to send, richer when they engage.
 
 ## D. Per-audience messaging (one core message, distinct paths — no dilution)
 
@@ -76,7 +78,7 @@ Home
 │   ├─ AI Dash Cam Installation
 │   └─ ELD Installation & Compliance
 ├─ Work  (by job type — anonymized; real photos)
-├─ Coverage  (the 11 metros; corridor map; per-metro pages added incrementally + substantively)
+├─ Coverage  (the 12 metros; corridor map; per-metro pages added incrementally + substantively)
 ├─ About  (founders, ~30 yrs, platform-agnostic philosophy, partner-channel angle)
 ├─ Technology / Field Reporting  (the proprietary field tool — differentiator)
 ├─ Contact / Request a Quote
@@ -87,14 +89,17 @@ Home
   regional content (no doorway pages, §133). Geography = the confirmed 11 (NYC→Tampa).
 - **Nav:** brand · Services · Work · Coverage · Build Your Protection · **phone** · **Request a Quote** (CTA).
 
-## G. Bilingual EN/ES content plan
+## G. Multilingual content plan — DECIDED: full bilingual at launch, extensible i18n
 
-- **Full, professionally-reviewed Spanish** for core pages at launch (Home, Services, Contact) — **not raw
-  machine translation** (reads as your brand; avoids thin-content). Expand ES coverage over time.
-- `/` + `/es/` URLs, **hreflang** (SEO/GEO §11), correct `<html lang>`.
-- **Persistent language toggle** in header, labeled **"Español"** (own-language name, **no flag icons**); always
-  allow manual switch. Design must allow **~20% text expansion** (Command 5).
-- Rationale: bilingual reaches Spanish-speaking fleet owners/operators *and* the field workforce.
+- **Full, professionally-reviewed Spanish across ALL pages at launch** (not raw MT — reads as the brand, avoids
+  thin-content).
+- **Built on an extensible i18n framework** (Astro i18n + a locale-keyed content model — content keyed by locale,
+  **NOT hardcoded EN/ES**) so **additional languages drop in later** by adding a locale, no rebuild. *(This is an
+  architecture requirement for Command 5 + the frontends.)*
+- `/` (en) + `/es/` (+ future `/xx/`) URLs, **hreflang** per locale (SEO/GEO §11), correct `<html lang>`.
+- **Persistent language switcher** in header, each option labeled in **its own language** ("Español", **no flag
+  icons**); always allow manual switch. Design allows **~20% text expansion** (Command 5).
+- Rationale: reaches Spanish-speaking fleet owners/operators *and* the field workforce; ready for more languages.
 
 ## H. Homepage section order (for Command 5 to lay out)
 
@@ -113,14 +118,14 @@ Specific over vague: real numbers ("5–99-vehicle fleets," "~30 years," named p
 varied sentence rhythm. **Ban:** "world-class / cutting-edge / best-in-class / trusted by," filler openers ("In
 today's landscape"), fake urgency, AI-cliché verbs ("boasting/featuring"), vague "studies show." Prove or omit.
 
-## J. Decisions for your review
+## J. Decisions — ✅ RESOLVED 2026-06-05 (one still pending input)
 
-1. **NC metro:** Charlotte (recommended), Raleigh, or both?
-2. **Quote form:** short single-step (≤6 fields) OR multi-step capturing fleet size / vehicle types / platform?
-   *(Recommend multi-step — better B2B qualification + lead quality.)*
-3. **Header phone number:** what number should be the tap-to-call CTA? (Need a real PG line.)
-4. **Spanish at launch:** core pages (Home/Services/Contact) now, expand later — OK? *(Recommend yes.)*
-5. **IA page set (§F):** approve the ~8-page structure, or add/remove anything (e.g., a Resources/blog now vs later)?
+1. **NC metro — ✅ BOTH Charlotte + Raleigh** (12 metros total).
+2. **Quote form — ✅ PROGRESSIVE** (minimal required + optional fleet-size/vehicle-types/platform; not gated).
+3. **Header phone number — ⏳ PENDING:** John to provide the real PG tap-to-call number (placeholder until then;
+   not blocking design).
+4. **Multilingual — ✅ FULL bilingual at launch + extensible i18n framework** (more languages added later).
+5. **IA page set (§F) — ✅ APPROVED** (~8 pages + the tool).
 
 ## K. Definition of Complete (U2)
 
