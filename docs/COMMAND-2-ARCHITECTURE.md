@@ -31,8 +31,9 @@
    best practice for multiple frontends + shared packages + codegen'd types. **Recommendation: one monorepo**
    (`apps/` surfaces · `services/` Workers · `packages/` shared). *Needs your OK to lock monorepo.*
 5. **✅ Confirmed GA + free-tier-friendly:** Hyperdrive (GA, free on Workers Paid), R2 ($0 egress), Neon+PostGIS
-   (3.5.x), Cloudflare Containers (GA Apr 2026) + Workflows (GA) — **so long-running jobs stay on Cloudflare, not
-   Fly.io** (single-vendor; Command 0 listed Fly.io as a fallback — now likely unnecessary).
+   (3.5.x), Cloudflare Containers (GA Apr 2026) + Workflows (GA). **[Refined by cost-benefit 2026-06-05:
+   long-running jobs → the existing DO droplets via free Cloudflare Tunnel (PRIMARY, sunk cost); CF Containers
+   demoted to secondary for bursty edge jobs; Fly.io dropped. NO GPU / gaussian-splat work — out of scope.]**
 
 ---
 
@@ -67,10 +68,10 @@
 | **svc-auth** | TS/Hono | In-house auth: sessions + JWT w/ refresh rotation, **Argon2id (WASM)**, rate limiting, MFA-ready, issues tenant context for RLS. *Highest-risk → Command 3.* | KV (sessions), Hyperdrive |
 | **svc-installs** | TS/Hono | Canonical install-event CRUD: `units` + `vehicle_type` + per-device `install_records`; admin QA reads; the schema the field app seeds. | Hyperdrive |
 | **svc-field-sync** | TS/Hono | Ingests offline-queued field reports; **idempotent (client request-id)**; returns proof-of-send; writes installs + enqueues media/notify. | Hyperdrive, Queues, svc-media (RPC) |
-| **svc-media** | TS/Hono | R2 presigned upload/download for install photos + future gaussian splats. | R2 |
+| **svc-media** | TS/Hono | R2 presigned upload/download for install photos. (**No gaussian splats — out of scope.**) | R2 |
 | **svc-notify** | TS/Hono | Field-events taxonomy routing + **multi-tenant recipients** (replaces legacy hardcoded recipient). Queue consumer. | Queues |
 | **svc-config** | TS/Hono | Control-panel config: feature flags + runtime settings (KV-backed; DO for live push). | KV, Durable Objects |
-| **svc-telematics** | **DEFERRED** — TS stub → Rust(workers-rs) *or* Cloudflare Container/Workflow | Heavy telematics ingestion/parse; introduce Rust/Container only when a measured hot path justifies it. | Queues, Hyperdrive |
+| **svc-telematics** | **DEFERRED** — TS stub → heavy ingestion on a **DO droplet (via Tunnel)**; Rust/CF-Container only if a measured hot path justifies it | Heavy telematics ingestion/parse. | Queues, Hyperdrive |
 
 ---
 
@@ -79,14 +80,14 @@
 | Choice | Why chosen | Speed | Memory | Trade-offs / flag |
 |---|---|---|---|---|
 | **Workers Static Assets** (all surfaces) | Cloudflare-recommended target; Pages de-emphasized; adapter dropped Pages | Edge-served static; ~0 cold start (JS) | n/a (static) | 🚩 amends Command 0 "Pages" |
-| **Astro + React/three.js islands** (marketing) | Zero-JS default; lazy 3D via `client:visible` | Best CWV of the four | Tiny baseline | three.js must `dispose()` on unmount (GPU leak) |
+| **Astro + React/three.js islands** (marketing) | Zero-JS default; lazy 3D via `client:visible` | Best CWV of the four | Tiny baseline | three.js must `dispose()` on unmount (browser WebGL-memory leak) |
 | **React + MUI v9 PWA** (field/portals) | Dense forms/tables; MUI X Data Grid | Good; budget Data Grid weight | Watch bundle on field tablets | iOS PWA caveats (§A.3) |
 | **TS / Hono v4.12** (default services) | De-facto Workers API framework; Zod+OpenAPI; full feature parity | ~840K req/s class | 128 MB/isolate ceiling | none material |
 | **Rust / workers-rs** (deferred, narrow) | Edge compute kernel for small CPU-bound inputs | Fast on small inputs only | WASM copy overhead on big payloads | 🚩 "not production-ready" README; defer until measured |
 | **Neon Postgres + PostGIS via Hyperdrive** | GA pooling; geospatial; ~9× faster global SELECTs | Transaction-mode pool | origin cap ~100 (Paid) | Don't stack on Neon's PgBouncer; migrate via direct conn |
-| **R2** (media) | $0 egress (photos + splats) | Edge | — | — |
+| **R2** (media) | $0 egress (install photos) | Edge | — | — |
 | **Queues / Durable Objects / Analytics Engine** | async / live state / metrics | — | DO single-threaded; scale across many | DO 10 GB each; SQLite-backed default |
-| **Cloudflare Containers/Workflows** (long jobs) | GA; keeps single-vendor vs Fly.io | per-10ms billing | container-sized | only if a job can't fit Workers |
+| **DO droplets via Tunnel** (long jobs, PRIMARY) | Sunk cost already owned; steady/always-on; free Tunnel | always-on | droplet-sized | maintain the server; CF Containers are the secondary/bursty option |
 
 ---
 
@@ -166,7 +167,8 @@ pg-platform/                  (pnpm workspaces + Turborepo)
 1. **Pages → Workers Static Assets — ✅ ADOPTED** (amends Command 0).
 2. **Defer Rust (TS/Hono first) — ✅ ADOPTED** (Rust only for a measured hot path later).
 3. **Repo topology = monorepo (pnpm + Turborepo) — ✅ ADOPTED** (resolves open-decision #1).
-4. **Drop Fly.io → Cloudflare Containers/Workflows — ✅ ADOPTED** (single-vendor).
+4. **Drop Fly.io — ✅ ADOPTED.** *[Refined by cost-benefit: long jobs → existing DO droplets via free Tunnel
+   (primary); CF Containers secondary. No GPU/splats.]*
 5. **Service split — ✅ FULL 7 UP FRONT** (auth · installs · field-sync · media · notify · config · telematics).
    *Note:* svc-telematics still starts as a TS stub; Rust/Container is introduced inside it only when measured.
 

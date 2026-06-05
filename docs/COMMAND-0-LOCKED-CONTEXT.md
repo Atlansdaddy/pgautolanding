@@ -161,7 +161,7 @@ form:** *"~30 years of installation experience"* (+ separately, the verifiable v
 
 ### The three surfaces
 1. **Marketing website** — credibility + lead generation; SEO/GEO-first; proves the real track record;
-   showcases real installs (3D explorer → Gaussian splats from PG's own capture). **Built first.**
+   showcases real installs (real photos + an interactive three.js 3D explorer — **no gaussian splats**). **Built first.**
 2. **Admin + technician portals** — admin: dispatch, QA, operations. Tech: jobs, schedule, install
    history/documentation.
 3. **Field reporting application** — the Field Emailer rebuild: offline-first PWA techs use on-site to
@@ -169,10 +169,10 @@ form:** *"~30 years of installation experience"* (+ separately, the verifiable v
 
 ### Locked technical decisions
 - **Host:** Cloudflare — Workers (compute + static), R2 (media; no egress fees — ideal for install
-  photos + splats), Hyperdrive (DB acceleration). **[Amended by Command 2, 2026-06-05: deploy to
+  photos), Hyperdrive (DB acceleration). **[Amended by Command 2, 2026-06-05: deploy to
   Workers Static Assets, NOT Pages — Cloudflare retired Pages investment and the Astro adapter dropped
-  Pages support. Long-running jobs use Cloudflare Containers/Workflows (both GA), NOT Fly.io —
-  single-vendor.]**
+  Pages support. Long-running jobs run on the **existing DO droplets via free Cloudflare Tunnel**
+  (primary; CF Containers secondary), NOT Fly.io. **No GPU/gaussian-splat work — out of scope.**]**
 - **Marketing site:** Astro (SSG/SSR, minimal JS, SEO-ideal) with React + three.js as islands for the
   3D explorer.
 - **Portals + field app:** React + MUI (MUI for data-dense portal/app UI — not the marketing site).
@@ -224,8 +224,10 @@ form:** *"~30 years of installation experience"* (+ separately, the verifiable v
   centered-everything, no generic three-card grids, no vague "trusted by" logo bars, no
   Inter-only/default fonts, no purple→blue gradients, no fabricated stats. Use editorial labels, side
   reveals, real photography. "Prove, don't claim" = the defensible-claims rule above.
-- **Signature interactive moment:** a real-vehicle 3D explorer with install-point hotspots, upgrading
-  toward Gaussian splats built from PG's own install captures (real jobs, not stock).
+- **Signature interactive moment:** an **interactive three.js 3D** marketing tool — the **"Build Your
+  Protection" risk-profile visualizer** (`build-your-protection.html`) + a real-vehicle explorer with
+  install-point hotspots naming real products. **NO gaussian splats — out of scope** (the tool is built to
+  work without them). Real photography remains the hero for proof.
 - **Brand Kit voice only** — no invented taglines or claims.
 
 ### Equipment / product facts (reference)

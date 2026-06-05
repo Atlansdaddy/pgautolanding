@@ -28,7 +28,12 @@
       "Bash(curl -s \"https://crates.io/api/v1/crates/specta\" -H \"User-Agent: research\")",
       "WebFetch(domain:dev.to)",
       "WebFetch(domain:nickb.dev)",
-      "Read(//c/c/Users/jviru/PGAuto/**)"
+      "Read(//c/c/Users/jviru/PGAuto/**)",
+      "WebFetch(domain:owasp.org)",
+      "WebFetch(domain:docs.npmjs.com)",
+      "WebFetch(domain:cheatsheetseries.owasp.org)",
+      "WebFetch(domain:www.digitalocean.com)",
+      "WebFetch(domain:www.cloudflare.com)"
     ]
   }
 }

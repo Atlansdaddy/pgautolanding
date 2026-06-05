@@ -5,10 +5,9 @@
   "description": "P.G. Auto Installs — Fleet Telematics Installation landing page",
   "scripts": {
     "start": "npx serve .",
-    "deploy": "wrangler pages deploy . --project-name=pgautolanding",
-    "deploy:prod": "wrangler pages deploy . --project-name=pgautolanding --branch=main"
+    "deploy": "wrangler deploy"
   },
   "devDependencies": {
-    "wrangler": "^3.90.0"
+    "wrangler": "^4.0.0"
   }
 }

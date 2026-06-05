@@ -1,3 +1,7 @@
 name = "pgautolanding"
-pages_build_output_dir = "."
-compatibility_date = "2026-06-04"
+compatibility_date = "2026-06-05"
+
+# Cloudflare Workers Static Assets (NOT Pages — per Command 2 architecture).
+# Pure static site: no Worker script needed; just serve the directory.
+[assets]
+directory = "."

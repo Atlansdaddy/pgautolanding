@@ -52,7 +52,7 @@ security, test coverage, or clarity for velocity.
 
 Four systems, built in this order:
 
-1. **Marketing website** — public site. Astro on Cloudflare Pages. *(Build first.)*
+1. **Marketing website** — public site. Astro on **Cloudflare Workers Static Assets** (not Pages). *(Build first.)*
 2. **Field Reporting System** — the "Field Emailer" rebuild; offline-first PWA for techs.
    *(First backend.)*
 3. **Tech portal** — jobs, field logging, documentation for technicians.
@@ -67,15 +67,16 @@ All four share one backend (microservice Workers + one Postgres) and one design 
 
 | Layer | Decision | Why |
 |---|---|---|
-| Host | **Cloudflare** — Workers, Pages, R2, Hyperdrive, D1, Durable Objects, Queues | Cheapest; **R2 has no egress fees** (critical for heavy install photos + gaussian splats); edge perf |
-| Marketing site | **Astro** (SSG/SSR) + React & three.js as **islands** | SEO/GEO-ideal, ships minimal JS, lazy-load 3D |
-| Portals + field app | **React + MUI** | MUI earns its place in dense tables/forms; **never on the marketing site** |
-| Backend | **Microservice Workers** — **Rust (workers-rs)** where perf/compute matters; **TypeScript/Hono** for CRUD | Right tool per service; both are Workers, both microservices |
-| Shared types | **OpenAPI / ts-rs codegen** across the Rust↔TS boundary | DRY; one source of truth for types |
+| Host | **Cloudflare** — **Workers Static Assets** (NOT Pages — retired), R2, Hyperdrive, Durable Objects, Queues | Cheapest; **R2 has no egress fees** (critical for heavy install photos); edge perf |
+| Marketing site | **Astro** (SSG/SSR) + React & three.js as **islands** | SEO/GEO-ideal, ships minimal JS, lazy-load the interactive 3D |
+| Portals + field app | **React + MUI v9** | MUI earns its place in dense tables/forms; **never on the marketing site** |
+| Backend | **Microservice Workers — TypeScript/Hono FIRST**; **Rust (workers-rs) DEFERRED** to a measured CPU-bound hot path only | Right tool per service; Rust "not production-ready" + WASM overhead → defer (Command 2) |
+| Shared types | **OpenAPI codegen** (+ ts-rs if Rust lands) across the boundary | DRY; one source of truth for types |
 | Database | **Neon Postgres + PostGIS**, via **Hyperdrive** | Relational integrity + geospatial for telematics; Hyperdrive is GA + free |
-| Auth | **In-house**, on **vetted primitives** | Full control — see hard rule below |
-| Media | **R2** | No-egress storage for photos/splats |
-| Long-running jobs | Small **Fly.io / DO container** *(only if a job can't fit Workers' execution model)* | e.g., telematics ingestion, splat processing |
+| Repo | **Monorepo** (pnpm workspaces + Turborepo): `apps/` · `services/` · `packages/` | Shared OpenAPI types; resolves repo topology (Command 2) |
+| Auth | **In-house**, on **vetted primitives** (Argon2id-WASM, passkeys+password, EdDSA JWT) — **Workers Paid required** | Full control — see hard rule + Command 3 |
+| Media | **R2** | No-egress storage for photos (**no gaussian splats — out of scope**) |
+| Long-running jobs | **Existing DO droplets via free Cloudflare Tunnel** (CF Containers secondary) | e.g., telematics ingestion. No GPU/splat work (Command 2 + cost-benefit) |
 
 **Field transport:** the rebuilt field app **never uses `mailto:`**. A tech action writes to an
 offline cache → syncs to the Workers API when there's signal → real proof-of-send, retry, and
@@ -140,9 +141,9 @@ server-side logging. This is the core functional upgrade over the legacy app.
   details shown inline on mobile (never hover-only); real tap targets.
 - **Distinctive, intentional craft (anti-slop).** No centered-everything, no generic card grids, no
   logo bars, no default fonts. Use editorial labels, side reveals, real typography hierarchy.
-- **Real photography is the hero.** Real install photos (and future **gaussian splats** of real PG
-  jobs) marked as real. The 3D explorer uses a real vehicle model with install-point hotspots naming
-  real products.
+- **Real photography is the hero.** Real install photos, marked as real. The **interactive three.js 3D**
+  (the "Build Your Protection" risk-profile tool + vehicle explorer with install-point hotspots naming
+  real products) is the signature interactive moment — **NO gaussian splats (out of scope).**
 - **Brand voice only.** No invented taglines, no "where others won't go" cleverness. PG serves all
   commercial fleets (5–99 sweet spot + specialized), professionally and with documentation.
 
