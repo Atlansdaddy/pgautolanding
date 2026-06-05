@@ -1,7 +1,9 @@
-# Command 5 — Design System & UX (PROPOSAL for review)
+# Command 5 — Design System & UX (✅ APPROVED & LOCKED 2026-06-05)
 
-> **STATUS: PROPOSAL — NOT APPROVED. No build yet.** Derives everything from the Command 0 brand kit; honors the
-> LOCKED SEO/GEO constraints + Command 4 messaging/IA. **U1:** grounded in live June 2026 design-system/motion/
+> **STATUS: ✅ APPROVED 2026-06-05 (John). No build yet.** Governs the build phases. **Decisions:** DTCG +
+> Style Dictionary token pipeline · base-MUI app shell (Toolpad unmaintained) · banners carry best-practice
+> defensible content (§E) · reveals tuned subtler · UI-Forensics Keep/Tune/Fix accepted. Derives everything from
+> the Command 0 brand kit; honors LOCKED SEO/GEO constraints + Command 4 messaging/IA. **U1:** grounded in live June 2026 design-system/motion/
 > control-panel research (cited in notes). Opens with the mandatory **UI Forensics** of the existing site.
 
 ---
@@ -76,6 +78,11 @@ working and tune deliberately — no wholesale replacement with template sludge.
   restrained weight · **lower density** (fewer items) · pause on hover **and** focus (`animation-play-state`) · a real
   pause `<button>` (WCAG **2.2.2**) · **full halt on reduced-motion** · duplicate content `aria-hidden` for seamless
   loop. Treat banners as quiet supporting strips, not focal elements. **Keep them — don't remove** (Command 0).
+- **Banner content (best practice — DECIDED):** a calm, low-density rotation of concrete, scannable, **defensible**
+  items only. **Strip 1 — service lines:** GPS Tracking · AI Dash Cams · ELD Compliance · Fleet Security. **Strip 2
+  (optional) — platforms + coverage:** "Systems we work with: Motive · Samsara · Netradyne" (named, **no partnership
+  claim**) · coverage corridor (NYC → Tampa). All Customer-verifiable/Proven. **No superlatives in the marquee** —
+  the "~30 years" anchor lives in the hero proof section (§G), not the ticker.
 
 ## F. Component inventory
 - **Marketing (Astro + CSS, React/three.js islands):** nav + progress bar · hero · eyebrow label · section block ·
@@ -122,13 +129,13 @@ Contrast incl. **over gradients** · visible focus not obscured · **≥24px tar
 Editorial/asymmetric layout **with clear hierarchy**, intentional whitespace, real type scale, real photography —
 **not** centered-everything, generic card grids, logo bars, or default fonts. Keep PG's existing editorial character.
 
-## L. Decisions for your review
-1. **Token tooling:** adopt **DTCG + Style Dictionary** as the single token source feeding both CSS and MUI? *(Recommend yes.)*
-2. **App shell:** build portals shell from **base MUI** (Toolpad unmaintained) vs use Toolpad Core anyway? *(Recommend base MUI.)*
-3. **Banner content:** what should the marquee strips actually say? (Right now they need real, defensible content — e.g.
-   service lines / coverage / "platform-agnostic" — not filler. Tied to claims taxonomy.)
-4. **Reveal intensity:** keep the alternating side reveals as-is, or dial them back (subtler)? *(Recommend tune subtler.)*
-5. Anything in the **UI Forensics Keep/Tune/Fix** you'd reclassify?
+## L. Decisions — ✅ RESOLVED 2026-06-05
+1. **Token tooling — ✅ DTCG + Style Dictionary** as the single source → CSS (marketing) + MUI theme (portals).
+2. **App shell — ✅ base MUI** (Toolpad Core is "not actively maintained" — avoid the dependency).
+3. **Banner content — ✅ best-practice defensible set** (§E): service lines (strip 1) + platforms/coverage (strip 2);
+   no superlatives in the ticker.
+4. **Reveal intensity — ✅ tune subtler** (subtler distance/duration; never animate the LCP hero).
+5. **UI Forensics Keep/Tune/Fix — ✅ accepted as-is.**
 
 ## M. Definition of Complete (U2)
 Done when: UI forensics (keep/tune/fix) ✓ · tokens (primitive→semantic→component, one source→CSS+MUI) ✓ · type +
