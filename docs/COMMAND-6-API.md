@@ -1,7 +1,8 @@
-# Command 6 — API Contract & Documentation (PROPOSAL for review)
+# Command 6 — API Contract & Documentation (✅ APPROVED & LOCKED 2026-06-05)
 
-> **STATUS: PROPOSAL — NOT APPROVED. No code.** Contract-first; every endpoint categorized + mapped to its
-> Command 2 service and Command 3 controls. **U1:** grounded in live June 2026 API standards (OpenAPI 3.1/3.2,
+> **STATUS: ✅ APPROVED 2026-06-05 (John). No code.** Governs Command 7 (Data). **Decisions:** camelCase JSON ·
+> `/v1/` path versioning (additive) · **lead capture = dedicated public `svc-leads` handler (8th service)**.
+> Contract-first; every endpoint categorized + mapped to its Command 2 service and Command 3 controls. **U1:** grounded in live June 2026 API standards (OpenAPI 3.1/3.2,
 > RFC 9457, Google AIP / Zalando / Stripe conventions) — cited in notes. **Right-sized:** this defines the
 > conventions + functional categories + representative endpoints; full per-endpoint specs are authored per phase
 > in Command 11 *against* this contract.
@@ -38,7 +39,7 @@
 | **Notifications & Routing** | svc-notify | multi-tenant event routing/recipients; outbound webhooks |
 | **Control-Panel Config** | svc-config | feature flags + runtime settings (admin, audited) |
 | **Telematics** *(deferred)* | svc-telematics | ingestion/parse (mostly async/internal) |
-| **Public / Lead Capture** | svc-notify (or tiny public handler) | marketing "Request a Quote" + Turnstile verify |
+| **Public / Lead Capture** | **svc-leads** (dedicated public handler — 8th service) | marketing "Request a Quote" + Turnstile verify |
 
 ## C. Per-service endpoint catalog (representative — not exhaustive)
 
@@ -76,13 +77,17 @@
 | POST `/v1/media/upload-url` | Issue scoped R2 **presigned PUT** | bearer | validate contentType/size **before** issuing; short expiry |
 | GET `/v1/media/{id}/url` | Scoped **presigned GET** | bearer | RLS; expiry |
 
-### Notifications & Routing (svc-notify) + Public / Lead Capture
+### Notifications & Routing (svc-notify)
 | Method · Path | Purpose | Auth | Controls |
 |---|---|---|---|
 | POST `/v1/notify` | Enqueue notification (internal) | service binding | multi-tenant routing (replaces hardcoded recipient) |
 | GET/PATCH `/v1/notify/routes` | Manage recipient routing | bearer (admin) | RLS; audit |
-| **POST `/v1/leads`** | **Public "Request a Quote"** (progressive form) | **public** | **Turnstile siteverify (server-side)**, rate-limit, Zod; optional fleet-size/vehicle/platform fields |
 | `webhooks: reportSynced / escalationRaised` | Outbound events | signed | OpenAPI 3.1 webhooks |
+
+### Public / Lead Capture (svc-leads — dedicated public handler)
+| Method · Path | Purpose | Auth | Controls |
+|---|---|---|---|
+| **POST `/v1/leads`** | **Public "Request a Quote"** (progressive form) | **public** | **Turnstile siteverify (server-side)**, strict rate-limit, Zod; optional fleet-size/vehicle/platform fields; enqueues to svc-notify. Isolated as the only public-write surface. |
 
 ### Control-Panel Config (svc-config)
 | Method · Path | Purpose | Auth | Controls |
@@ -112,12 +117,11 @@ Each TS/Hono service defines Zod schemas → **`@hono/zod-openapi`** emits its *
 + service (single source of truth). Spectral lint enforces conventions (casing, tags, operationId, Problem schema).
 A future Rust service emits the same OpenAPI via **utoipa**.
 
-## F. Decisions for your review
-1. **JSON casing: camelCase** (TS-aligned) — confirm? *(Recommend yes.)*
-2. **Versioning: URI path `/v1/`** with additive evolution — confirm? *(Recommend yes.)*
-3. **Lead-capture endpoint** (`POST /v1/leads`) lives in **svc-notify** vs a tiny dedicated public handler? *(Recommend
-   svc-notify — fewer moving parts, right-sized.)*
-4. Any endpoints/categories to add or cut for the **here-and-now** scope (e.g., telematics stays a stub until needed)?
+## F. Decisions — ✅ RESOLVED 2026-06-05
+1. **JSON casing — ✅ camelCase** (TS-aligned).
+2. **Versioning — ✅ URI path `/v1/`** with additive evolution.
+3. **Lead-capture — ✅ dedicated public `svc-leads` handler** (8th service) — isolates the only public-write endpoint.
+4. **Scope — ✅ telematics stays a stub** until a real ingestion need exists (right-sized).
 
 ## G. Definition of Complete (U2)
 Done when: global conventions (spec/errors/versioning/naming/pagination/idempotency/auth/rate-limit) ✓ · functional

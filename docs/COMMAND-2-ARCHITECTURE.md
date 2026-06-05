@@ -72,6 +72,7 @@
 | **svc-notify** | TS/Hono | Field-events taxonomy routing + **multi-tenant recipients** (replaces legacy hardcoded recipient). Queue consumer. | Queues |
 | **svc-config** | TS/Hono | Control-panel config: feature flags + runtime settings (KV-backed; DO for live push). | KV, Durable Objects |
 | **svc-telematics** | **DEFERRED** — TS stub → heavy ingestion on a **DO droplet (via Tunnel)**; Rust/CF-Container only if a measured hot path justifies it | Heavy telematics ingestion/parse. | Queues, Hyperdrive |
+| **svc-leads** *(added Cmd 6)* | TS/Hono — **public** | Marketing "Request a Quote" capture; Turnstile + rate-limit; enqueues to svc-notify. **Only public-write surface, isolated.** | Queues |
 
 ---
 
@@ -111,7 +112,7 @@ Server-side reconciliation backstop covers iOS 7-day eviction.
 ```
 pg-platform/                  (pnpm workspaces + Turborepo)
 ├─ apps/        web-marketing · app-field · portal-tech · portal-admin
-├─ services/    svc-auth · svc-installs · svc-field-sync · svc-media · svc-notify · svc-config · svc-telematics
+├─ services/    svc-auth · svc-installs · svc-field-sync · svc-media · svc-notify · svc-config · svc-telematics · svc-leads
 └─ packages/    @pg/api-types (OpenAPI-codegen) · @pg/schemas (shared Zod) · @pg/ui (MUI theme + brand tokens)
                 @pg/auth-client · @pg/config-client
 ```
@@ -169,8 +170,8 @@ pg-platform/                  (pnpm workspaces + Turborepo)
 3. **Repo topology = monorepo (pnpm + Turborepo) — ✅ ADOPTED** (resolves open-decision #1).
 4. **Drop Fly.io — ✅ ADOPTED.** *[Refined by cost-benefit: long jobs → existing DO droplets via free Tunnel
    (primary); CF Containers secondary. No GPU/splats.]*
-5. **Service split — ✅ DESIGN ALL 7 NOW, BUILD INCREMENTALLY** (auth · installs · field-sync · media · notify ·
-   config · telematics). Boundaries + schema/contracts defined up front so we don't repaint later, but implement
+5. **Service split — ✅ DESIGN ALL 8 NOW, BUILD INCREMENTALLY** (auth · installs · field-sync · media · notify ·
+   config · telematics · **svc-leads** [added Cmd 6]). Boundaries + schema/contracts defined up front so we don't repaint later, but implement
    only what each phase needs — **marketing site = 0 backend services**, field app ≈ 2–3, portals add the rest.
    No premature scaffolding. svc-telematics starts as a TS stub; Rust/CF-Container only when measured.
 

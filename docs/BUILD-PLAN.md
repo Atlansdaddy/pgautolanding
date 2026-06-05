@@ -16,7 +16,8 @@ adversarial gate expanded. Business-observability command was considered and dec
 - **Command 3 — Security Design** → [x] **✅ LOCKED 2026-06-05**: [COMMAND-3-SECURITY.md](./COMMAND-3-SECURITY.md) (ASVS 5.0 L2 · OWASP Top 10:2025 · passkeys+password+TOTP · Argon2id-WASM · EdDSA JWT · RLS `SET LOCAL` · Workers Paid). Hosting cost-benefit → [COST-BENEFIT-HOSTING.md](./COST-BENEFIT-HOSTING.md).
 - **Command 4 — Messaging & Content Architecture** → [x] **✅ LOCKED 2026-06-05**: [COMMAND-4-MESSAGING.md](./COMMAND-4-MESSAGING.md) (core message · proof hierarchy w/o logos/stars · progressive quote form · ~8-page IA · 12 metros · full bilingual + extensible i18n). Markets → [LOCAL-SEO-TARGETS.md](./LOCAL-SEO-TARGETS.md).
 - **Command 5 — Design System & UX** → [x] **✅ LOCKED 2026-06-05**: [COMMAND-5-DESIGN.md](./COMMAND-5-DESIGN.md) (UI-Forensics keep/tune/fix · DTCG+Style Dictionary tokens · base-MUI shell · banner fix · control-panel · WCAG 2.2 AA).
-- **Command 6 — API Contract & Docs** → ⏭️ **NEXT**.
+- **Command 6 — API Contract & Docs** → [x] **✅ LOCKED 2026-06-05**: [COMMAND-6-API.md](./COMMAND-6-API.md) (OpenAPI 3.1 · RFC 9457 errors · camelCase · /v1/ · cursor pagination · Idempotency-Key · 8 services incl. svc-leads).
+- **Command 7 — Data Architecture** → ⏭️ **NEXT**.
 - **Command 2 — Architecture Blueprint** — service map, stacks-per-service, DRY/shared contracts, security touchpoints.
 - **Command 3 — Security Design** — threat model per surface, authN/Z, secrets, controls matrix, residual risk.
 - **Command 4 — Messaging & Content Architecture** 🆕 *(inserted before Design)* — homepage copy, proof
