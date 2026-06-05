@@ -12,7 +12,8 @@ Legend: `[ ]` todo · `[~]` in progress · `[x]` done · 🔒 blocked on a human
 adversarial gate expanded. Business-observability command was considered and declined.*
 - **Command 0 — Locked project context** → [x] done: [COMMAND-0-LOCKED-CONTEXT.md](./COMMAND-0-LOCKED-CONTEXT.md) (+ Claims Classification taxonomy v1.1)
 - **Command 1 — SEO/GEO compilation** → [x] **✅ LOCKED 2026-06-04**: [SEO_GEO_GUIDELINES.md](./SEO_GEO_GUIDELINES.md) (142 cited guidelines; decisions A–G resolved). Target geography → [LOCAL-SEO-TARGETS.md](./LOCAL-SEO-TARGETS.md). Parked: OEM/partner directories + review content (placeholders only).
-- **Command 2 — Architecture Blueprint** → [~] **IN PROGRESS** (U1 currency gate running).
+- **Command 2 — Architecture Blueprint** → [x] **✅ LOCKED 2026-06-05**: [COMMAND-2-ARCHITECTURE.md](./COMMAND-2-ARCHITECTURE.md) (monorepo · Workers Static Assets · TS/Hono-first, Rust deferred · 7 services · Hyperdrive→Neon+PostGIS · CF Containers over Fly.io).
+- **Command 3 — Security Design** → ⏭️ next (after the queued risk-explorer add).
 - **Command 2 — Architecture Blueprint** — service map, stacks-per-service, DRY/shared contracts, security touchpoints.
 - **Command 3 — Security Design** — threat model per surface, authN/Z, secrets, controls matrix, residual risk.
 - **Command 4 — Messaging & Content Architecture** 🆕 *(inserted before Design)* — homepage copy, proof
@@ -52,7 +53,13 @@ adversarial gate expanded. Business-observability command was considered and dec
 
 ---
 
-## Phase 1 — Marketing Website (Astro on Cloudflare Pages) — *build first*
+## Phase 1 — Marketing Website (Astro on **Cloudflare Workers Static Assets**) — *build first*
+
+> **Queued site assets / integration debt (added 2026-06-05):**
+> - `build-your-protection.html` ("Build Your Protection" risk explorer) — added & linked from the landing page
+>   (nav + hero CTA). ⚠️ **Integration debt for Command 5:** uses Google-Fonts CDN + cdnjs three.js r128 →
+>   bring up to LOCKED standards (self-host fonts, lazy-load 3D, EN/ES, claims taxonomy on any copy, WCAG 2.2 AA).
+> - `assets/SP167.pdf` + `assets/toyotatacomaincab…jpg` — real product spec + real install photo (hero/proof material).
 
 ### 1A — Pre-build gates (no markup ships until these clear)
 - 🚪 [ ] **Command 1 — SEO/GEO compliance file** (⏭️ NEXT): research + compile current SEO & GEO
@@ -156,7 +163,7 @@ subdomains (pgautoinstalls.com + app/tech/admin/portal); Field data-model *direc
 (job-type only, no company names, ~30 yrs experience, no install count).
 
 **Still open:**
-1. 🔒 Repo topology (monorepo vs multi-repo) — *blocks Phase 0.*
+1. ✅ **RESOLVED (Command 2): monorepo** (pnpm + Turborepo — apps/ · services/ · packages/).
 2. [ ] **Command 1** SEO/GEO guideline file + sign-off — *actionable now; gates Phase 1 build.*
 3. 🔒 **Command 3** auth/session + control-panel config detailed design — *blocks Phases 3/4.*
 4. [ ] Finalize Field Reporting **schema** (direction locked; exact columns/type-attrs TBD) +

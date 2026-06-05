@@ -12,7 +12,23 @@
       "WebFetch(domain:developers.openai.com)",
       "WebFetch(domain:www.w3.org)",
       "WebFetch(domain:launchcodex.com)",
-      "WebFetch(domain:arxiv.org)"
+      "WebFetch(domain:arxiv.org)",
+      "WebFetch(domain:developers.cloudflare.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:blog.cloudflare.com)",
+      "WebFetch(domain:neon.com)",
+      "WebFetch(domain:www.magicbell.com)",
+      "Bash(gh release *)",
+      "Bash(curl -s \"https://api.github.com/repos/cloudflare/workers-rs/releases?per_page=6\")",
+      "Bash(curl -s \"https://registry.npmjs.org/@hono/zod-openapi/latest\")",
+      "Bash(curl -s \"https://registry.npmjs.org/hono/latest\")",
+      "WebFetch(domain:mui.com)",
+      "Bash(curl -s \"https://crates.io/api/v1/crates/ts-rs\" -H \"User-Agent: research\")",
+      "Bash(curl -s \"https://crates.io/api/v1/crates/worker\" -H \"User-Agent: research\")",
+      "Bash(curl -s \"https://crates.io/api/v1/crates/specta\" -H \"User-Agent: research\")",
+      "WebFetch(domain:dev.to)",
+      "WebFetch(domain:nickb.dev)",
+      "Read(//c/c/Users/jviru/PGAuto/**)"
     ]
   }
 }

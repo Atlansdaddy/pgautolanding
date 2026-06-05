@@ -168,15 +168,19 @@ form:** *"~30 years of installation experience"* (+ separately, the verifiable v
    log installs/events; feeds the portals and the marketing site's live panel.
 
 ### Locked technical decisions
-- **Host:** Cloudflare — Workers (compute), Pages (Astro/static), R2 (media; no egress fees — ideal
-  for install photos + splats), Hyperdrive (DB acceleration). DigitalOcean/Fly.io reserved only for
-  any long-running job that doesn't fit Workers' execution model (telematics ingestion, splat processing).
+- **Host:** Cloudflare — Workers (compute + static), R2 (media; no egress fees — ideal for install
+  photos + splats), Hyperdrive (DB acceleration). **[Amended by Command 2, 2026-06-05: deploy to
+  Workers Static Assets, NOT Pages — Cloudflare retired Pages investment and the Astro adapter dropped
+  Pages support. Long-running jobs use Cloudflare Containers/Workflows (both GA), NOT Fly.io —
+  single-vendor.]**
 - **Marketing site:** Astro (SSG/SSR, minimal JS, SEO-ideal) with React + three.js as islands for the
   3D explorer.
 - **Portals + field app:** React + MUI (MUI for data-dense portal/app UI — not the marketing site).
-- **Backend:** microservice Workers — Rust (workers-rs) where perf/memory/compute matter (telematics,
-  WASM bits); TypeScript + Hono for CRUD services. Shared types generated across the boundary
-  (OpenAPI / ts-rs) to stay DRY.
+- **Backend:** microservice Workers — **TypeScript + Hono for everything first**; Rust (workers-rs)
+  introduced **only for a measured CPU-bound hot path** (telematics parsing, geospatial) — **[Amended by
+  Command 2, 2026-06-05: Rust DEFERRED; workers-rs still flags "not production-ready," and WASM
+  bundle/memory-copy overhead negates the win except on small inputs.]** Shared types generated across the
+  boundary (OpenAPI codegen / ts-rs) to stay DRY.
 - **Database:** Neon Postgres + PostGIS (geospatial: locations, geofences, routes), via Hyperdrive.
 - **Auth:** in-house, built on vetted primitives (Argon2id hashing, standard JWT/session +
   refresh-token rotation, rate limiting, MFA-ready). No hand-rolled crypto. Highest-risk area — full
