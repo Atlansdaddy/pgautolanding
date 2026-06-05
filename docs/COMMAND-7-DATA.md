@@ -1,7 +1,10 @@
-# Command 7 — Data Architecture (PROPOSAL for review)
+# Command 7 — Data Architecture (✅ APPROVED & LOCKED 2026-06-05)
 
-> **STATUS: PROPOSAL — NOT APPROVED. No migrations yet.** Finalizes the **canonical install-event schema** (Command 0
-> §11 flagged this as draft). **U1:** data practices already verified current (June 2026) in Commands 2–3 — Neon +
+> **STATUS: ✅ APPROVED 2026-06-05 (John). No migrations yet.** Governs Command 8 (Tests). **Decisions:** schema
+> centered on **AI dash cam installs** (primary; VIN/asset#/make/model · jobsite · technician · install details ·
+> image inputs · geolocation · time-clock); rail-chassis GPS = secondary JSONB attributes; **type-specific fields in
+> validated JSONB** (extensible, no migration per field); **field-events config-toggleable per tenant**; structure
+> locked, specifics fillable later. Finalizes the canonical install-event schema (Command 0 §11). **U1:** data practices already verified current (June 2026) in Commands 2–3 — Neon +
 > PostGIS, Hyperdrive transaction pooling, RLS `SET LOCAL`, drizzle-kit migrations, BRIN/partitioning. **Several
 > fields below are DRAFT pending John's domain knowledge — flagged in §H; I will not finalize them by inventing.**
 
@@ -17,7 +20,12 @@
   item; split enum-add migrations (can't run in a txn). Per-PR **Neon branch** for test DBs (Command 8).
 - **Least privilege:** separate **read-only / read-write / migration(owner)** DB roles.
 
-## B. Canonical domain model (the install-event schema — DRAFT)
+## B. Canonical domain model (the install-event schema)
+
+> **PRIMARY install type = AI DASH CAM installs** (most common — the schema centers here). Its shape: **unit
+> identifiers (VIN · asset number · make · model) · jobsite · technician · install details · image inputs (photos) ·
+> geolocation · time-clock (clock in/out + timestamps).** The NS **rail-chassis GPS** install (flash_count /
+> hardwire / loaded) is a **secondary "nice-to-have" vehicle_type**, carried in JSONB attributes — not the core case.
 
 ```
 tenants ─┐
@@ -35,9 +43,14 @@ tenants ─┐
 | Table | Key columns | Notes |
 |---|---|---|
 | **tenants** | id, name, status, created_at | PG's clients (multi-tenant root; replaces legacy single hardcoded client) |
-| **units** | id, tenant_id, **vehicle_type**, **identifiers** (VIN / chassis# / asset#), make, model, year, **`attributes` JSONB** (type-specific), created_at/updated_at | generalizes legacy `chassis` → any fleet vehicle; type-specific fields live in validated JSONB |
-| **install_records** | id, tenant_id, unit_id→units, **device_type**, **product**, status (pass/fail), **install fields** (e.g. flash_count, hardwire, loaded for rail), installer_id, notes, **`attributes` JSONB**, installed_at (timestamptz) | one row **per device installed on a unit**; status + type-specific install detail |
-| **install_events** | id, tenant_id, **event_type** (start_of_day/end_of_day/delay/escalation/inventory), jobsite_id, tech_id, payload JSONB, occurred_at (timestamptz) | the Field Reporting events (replaces mailto) |
+| **units** | id, tenant_id, vehicle_type, **VIN, asset_number, make, model**, year, **`attributes` JSONB** (type-specific), created_at/updated_at | confirmed identifiers VIN/asset#/make/model; rail `chassis#` goes in attributes. Generalizes legacy `chassis` → any vehicle |
+| **install_records** | id, tenant_id, unit_id→units, **device_type** (AI dash cam = primary; also GPS/ELD/gateway), **product** (Motive AI Dashcam Plus / Netradyne D-450 / Samsara CM34), status (pass/fail), jobsite_id, **technician_id**, **install_geog (PostGIS point — captured at install)**, **clock_in / clock_out (timestamptz)**, install detail in **`attributes` JSONB** (dashcam: mounting/camera-position/wiring; rail: flash_count/hardwire/loaded), notes, installed_at (timestamptz) | one row **per device installed**; dashcam-centric; photos via `media`; geolocation + time-clock built in |
+| **install_events** | id, tenant_id, **event_type**, jobsite_id, tech_id, payload JSONB, occurred_at (timestamptz) | Field Reporting events (replaces mailto). **event_type set is config-driven** — see §B-events |
+
+**Field-events taxonomy (config-toggleable):** seed set = `start_of_day · end_of_day · delay · escalation · inventory`
++ common-sense additions (e.g. `arrival · completion · break · parts_request`). **Which event types are active is
+controlled per-tenant in svc-config** (activate/deactivate without a code change) — the registry of allowed types lives
+in config; `install_events.event_type` validates against the active set.
 | **jobsites** | id, tenant_id, name, **geog (PostGIS GEOGRAPHY point)**, address | install locations |
 | **jobs** | id, tenant_id, jobsite_id, scheduled_at, assigned_tech_id, status | dispatch/QA |
 | **media** | id, tenant_id, install_record_id, r2_key, content_type, size, created_at | R2 object refs (photos; client branding stripped) |
@@ -80,18 +93,17 @@ access — except all share the one Neon DB with RLS. svc-installs owns units/in
 install_events + install_records (via svc-installs or shared schema — confirm boundary); svc-leads owns leads;
 svc-config owns flags/settings; svc-auth owns users.
 
-## H. Decisions for your review — **NEEDS YOUR DOMAIN KNOWLEDGE** (Command 0 §11 finalization)
-1. **Vehicle types PG actually installs on** — confirm/expand the list: light-duty (car/van/pickup) · heavy-duty
-   (dump/refuse/crane/equipment) · rail chassis · **others?** (e.g., Sprinter vans, box trucks, buses, trailers?).
-2. **Type-specific fields per vehicle type** — rail chassis = `flash_count / hardwire / loaded` (from legacy). What
-   fields do the OTHER types need? (Or start with rail's + add per type as they come up.)
-3. **Device/product list for install_records** — confirm `device_type`s: GPS tracker · AI dash cam · ELD · Vehicle
-   Gateway · (Motive AI Dashcam Plus combines camera+gateway+ELD). Any others?
-4. **Type-specific storage:** core columns + **validated JSONB `attributes`** (recommended, extensible) vs a typed
-   column per field? *(Recommend JSONB.)*
-5. **Field events taxonomy** — confirm: start_of_day · end_of_day · delay · escalation · inventory. Add/remove any?
-6. **Unit identifiers** — which does PG track? VIN · chassis# · asset/unit# · plate (plate may be PII — exclude?).
-7. **Lead retention** — purge unconverted leads after how long? (e.g., 12–24 months.)
+## H. Decisions — ✅ RESOLVED 2026-06-05
+1. **Primary install type = AI DASH CAM installs** (most common). Core shape: VIN · asset_number · make · model ·
+   jobsite · technician · install details · image inputs · geolocation · time-clock. **Schema centered here.**
+2. **Rail-chassis GPS (NS)** (`flash_count / hardwire / loaded`) = **secondary "nice-to-have" vehicle_type**, carried
+   in JSONB attributes — not the core case.
+3. **Type-specific storage — ✅ validated JSONB `attributes`** (extensible; no migration per field).
+4. **Field-events — ✅ config-toggleable:** seed `start/end_of_day · delay · escalation · inventory` + common-sense
+   additions; **active set controlled per-tenant in svc-config** (activate/deactivate without code change).
+5. **Identifiers — ✅ VIN · asset_number · make · model** (rail `chassis#` in attributes).
+6. **Still fillable later (JSONB makes this safe):** exhaustive vehicle-type list, per-type fields beyond dashcam/rail,
+   full device list, plate-as-PII policy, lead retention window. Not blocking — added as encountered.
 
 ## I. Definition of Complete (U2)
 Done when: canonical schema (tables/keys/constraints) ✓ · multi-tenant RLS design ✓ · type-specific-field strategy ✓ ·

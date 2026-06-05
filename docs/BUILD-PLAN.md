@@ -17,7 +17,8 @@ adversarial gate expanded. Business-observability command was considered and dec
 - **Command 4 — Messaging & Content Architecture** → [x] **✅ LOCKED 2026-06-05**: [COMMAND-4-MESSAGING.md](./COMMAND-4-MESSAGING.md) (core message · proof hierarchy w/o logos/stars · progressive quote form · ~8-page IA · 12 metros · full bilingual + extensible i18n). Markets → [LOCAL-SEO-TARGETS.md](./LOCAL-SEO-TARGETS.md).
 - **Command 5 — Design System & UX** → [x] **✅ LOCKED 2026-06-05**: [COMMAND-5-DESIGN.md](./COMMAND-5-DESIGN.md) (UI-Forensics keep/tune/fix · DTCG+Style Dictionary tokens · base-MUI shell · banner fix · control-panel · WCAG 2.2 AA).
 - **Command 6 — API Contract & Docs** → [x] **✅ LOCKED 2026-06-05**: [COMMAND-6-API.md](./COMMAND-6-API.md) (OpenAPI 3.1 · RFC 9457 errors · camelCase · /v1/ · cursor pagination · Idempotency-Key · 8 services incl. svc-leads).
-- **Command 7 — Data Architecture** → ⏭️ **NEXT**.
+- **Command 7 — Data Architecture** → [x] **✅ LOCKED 2026-06-05**: [COMMAND-7-DATA.md](./COMMAND-7-DATA.md) (canonical schema centered on **dash cam installs** · units+install_records+install_events · JSONB type-specific attrs · config-toggleable events · multi-tenant RLS · PostGIS · drizzle migrations).
+- **Command 8 — Test Strategy & Build Rails** → ⏭️ **NEXT**.
 - **Command 2 — Architecture Blueprint** — service map, stacks-per-service, DRY/shared contracts, security touchpoints.
 - **Command 3 — Security Design** — threat model per surface, authN/Z, secrets, controls matrix, residual risk.
 - **Command 4 — Messaging & Content Architecture** 🆕 *(inserted before Design)* — homepage copy, proof
@@ -171,8 +172,8 @@ subdomains (pgautoinstalls.com + app/tech/admin/portal); Field data-model *direc
 2. [ ] **Command 1** SEO/GEO guideline file + sign-off — *actionable now; gates Phase 1 build.*
 3. ✅ **Auth/session RESOLVED (Command 3)**: passkeys+password+TOTP, EdDSA JWT, stateful `__Host-` sessions,
    RLS `SET LOCAL`. *(Control-panel config UI still detailed in Command 5 Design.)*
-4. [ ] Finalize Field Reporting **schema** (direction locked; exact columns/type-attrs TBD) +
-   field-events taxonomy + multi-tenant routing — *blocks Phase 2.*
+4. ✅ **RESOLVED (Command 7)**: canonical schema centered on dash cam installs; JSONB type-specific attrs;
+   config-toggleable field-events; multi-tenant RLS. (Exhaustive type/field lists fillable later via JSONB.)
 5. NON-BLOCKING confirmations (don't gate Phase 1): exact subdomain names · marketing IA list
    (Command 5 default proposed) · Eric/Safety Net contract terms · manufacturer partner status.
 
