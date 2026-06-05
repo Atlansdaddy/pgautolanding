@@ -36,7 +36,8 @@
       "WebFetch(domain:www.cloudflare.com)",
       "WebFetch(domain:www.joshwcomeau.com)",
       "WebFetch(domain:www.nngroup.com)",
-      "WebFetch(domain:www.htmhell.dev)"
+      "WebFetch(domain:www.htmhell.dev)",
+      "WebFetch(domain:www.openapis.org)"
     ]
   }
 }
