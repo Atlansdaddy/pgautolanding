@@ -169,8 +169,10 @@ pg-platform/                  (pnpm workspaces + Turborepo)
 3. **Repo topology = monorepo (pnpm + Turborepo) — ✅ ADOPTED** (resolves open-decision #1).
 4. **Drop Fly.io — ✅ ADOPTED.** *[Refined by cost-benefit: long jobs → existing DO droplets via free Tunnel
    (primary); CF Containers secondary. No GPU/splats.]*
-5. **Service split — ✅ FULL 7 UP FRONT** (auth · installs · field-sync · media · notify · config · telematics).
-   *Note:* svc-telematics still starts as a TS stub; Rust/Container is introduced inside it only when measured.
+5. **Service split — ✅ DESIGN ALL 7 NOW, BUILD INCREMENTALLY** (auth · installs · field-sync · media · notify ·
+   config · telematics). Boundaries + schema/contracts defined up front so we don't repaint later, but implement
+   only what each phase needs — **marketing site = 0 backend services**, field app ≈ 2–3, portals add the rest.
+   No premature scaffolding. svc-telematics starts as a TS stub; Rust/CF-Container only when measured.
 
 ## J. Definition of Complete (U2) — for this command
 

@@ -1,48 +1,30 @@
-# Local SEO — Target Geography & Location-Page Plan (DRAFT for John's confirmation)
+# Local SEO — Target Geography & Location-Page Plan (✅ markets CONFIRMED 2026-06-05)
 
-> Feeds [SEO_GEO_GUIDELINES.md](./SEO_GEO_GUIDELINES.md) §7 and the new **Command 4 (Messaging & Content
-> Architecture)** + **Command 5 (Design)** location-page work. **These are researched *candidate* markets —
-> not an assertion that PG already serves them.** John confirms/prunes actual coverage. **GBP allows ≤20
-> service areas**, so the GBP set must be prioritized; on-site location *pages* can be broader **but only if
-> each is substantive** (real regional proof) — thin "swap-the-city-name" doorway pages are penalized (§7).
+> Feeds [SEO_GEO_GUIDELINES.md](./SEO_GEO_GUIDELINES.md) §7 and **Command 4 (Messaging & Content Architecture)**
+> + **Command 5 (Design)**. **Markets CONFIRMED by John (2026-06-05): 11 metros along the I-95 / Eastern
+> Seaboard corridor, NYC → Tampa.** All 11 fit GBP's ≤20 service-area limit. On-site location pages must each be
+> substantive (real regional proof) — no thin "swap-the-city-name" doorway pages (§7).
 
-Region: **Mid-Atlantic specialist** (primary) **expanding toward the FL / Cocoa Beach (Space Coast) corridor**
-(secondary). Markets are ranked by commercial-fleet / logistics / port / rail density — the buyers PG installs for.
+## The 11 confirmed metros (NYC → Tampa corridor)
 
----
-
-## Tier 1 — Primary Mid-Atlantic metros (highest fleet density; prioritize for GBP + first location pages)
-
-| # | Anchor metro | Key suburbs / submarkets | Why it's high-impact |
+| # | State | Metro | Notes |
 |---|---|---|---|
-| 1 | **Philadelphia, PA** | King of Prussia, Bensalem, Norristown, Conshohocken, Chester; **Camden & Cherry Hill, NJ** | I-95 corridor, Port of Philadelphia, dense delivery/logistics + service fleets |
-| 2 | **Lehigh Valley, PA** (Allentown–Bethlehem–Easton) | Bethlehem, Easton, Whitehall, Breinigsville | One of the East Coast's largest warehousing/distribution corridors (Amazon/FedEx/UPS hubs) |
-| 3 | **Harrisburg / Central PA** | Carlisle, Mechanicsburg, York, Lancaster | Carlisle/I-81 distribution mega-hub; huge OTR + regional fleets |
-| 4 | **Newark / North NJ** | Elizabeth, Edison, Secaucus, Carteret, Linden | **Port Newark–Elizabeth** (largest East Coast port complex) — drayage/trucking fleets at scale |
-| 5 | **Baltimore, MD** | Dundalk, Glen Burnie, Essex, Columbia, Towson, Sparrows Point (Tradepoint Atlantic) | Port of Baltimore + distribution; broad commercial-fleet base |
-| 6 | **Washington DC metro** | NoVA: Arlington, Alexandria, Fairfax, Manassas, Sterling/Dulles · MD: Silver Spring, Rockville, Hyattsville, Landover | Government, facility-services, and trade fleets; affluent service-fleet market |
-| 7 | **Hampton Roads, VA** (Norfolk–Virginia Beach–Chesapeake) | Portsmouth, Newport News, Suffolk | **Port of Virginia**, Class I rail (Norfolk Southern roots), naval/logistics fleets |
-| 8 | **Richmond, VA** | Henrico, Chesterfield, Ashland | I-95/I-64 distribution crossroads |
+| 1 | NY | **New York City** (metro, incl. northern NJ) | Largest commercial-fleet density on the corridor |
+| 2 | PA | **Harrisburg / Central PA** | Carlisle / I-81 distribution hub |
+| 3 | PA | **Pittsburgh** | Western-PA industrial / construction fleets |
+| 4 | DC·VA·MD | **Washington DC — "DMV"** (DC + Northern VA + suburban MD) | Government, facility-services, trade fleets |
+| 5 | MD | **Baltimore** | Port + distribution |
+| 6 | VA | **Richmond** | I-95 / I-64 crossroads |
+| 7 | NC | **Charlotte** (NC's largest metro) | Major freight / distribution hub. *Raleigh = optional #2 (Research Triangle) — confirm.* |
+| 8 | SC | **Charleston** | Port city; SC anchor |
+| 9 | FL | **Jacksonville** | Major FL logistics / port |
+| 10 | FL | **Orlando** | Central-FL fleets / service |
+| 11 | FL | **Tampa** | Gulf-coast FL fleets / port |
 
-## Tier 2 — Secondary Mid-Atlantic (strong, build after Tier 1 proves out)
+**One open sub-question:** NC — go with **Charlotte** (recommended, biggest), **Raleigh**, or **both**?
 
-| # | Market | Submarkets | Why |
-|---|---|---|---|
-| 9 | **Wilmington, DE** | New Castle, Newark DE | I-95 logistics; DE business-friendly fleet base |
-| 10 | **Scranton / Wilkes-Barre, PA** (NEPA) | Hazleton, Pittston | I-81 warehousing corridor (major fulfillment growth) |
-| 11 | **Pittsburgh, PA** | Monroeville, Robinson | Western-PA industrial/construction fleets |
-| 12 | **Winchester / Front Royal, VA** | — | I-81 distribution gateway |
-| 13 | **Southern NJ** | Vineland, Atlantic City | Regional service + delivery fleets |
-| 14 | **Salisbury, MD / Eastern Shore** | — | Agriculture/logistics fleets |
-
-## Tier 3 — FL Space Coast expansion (future / as coverage opens)
-
-| # | Market | Submarkets | Why |
-|---|---|---|---|
-| 15 | **Cocoa / Cocoa Beach, FL** | Rockledge, Merritt Island | Stated expansion anchor (Space Coast) |
-| 16 | **Melbourne, FL** | Palm Bay, West Melbourne | Brevard County fleet/industrial base |
-| 17 | **Titusville, FL** | — | Space Coast logistics/aerospace support fleets |
-| 18 | **Orlando metro (adjacent)** | Kissimmee, Sanford | Large central-FL logistics/service fleets |
+*(Superseded the earlier Mid-Atlantic draft — Philadelphia / Lehigh Valley / Newark / Hampton Roads / Cocoa Beach
+are NOT in PG's confirmed list.)*
 
 ---
 
