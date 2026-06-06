@@ -1,7 +1,9 @@
-# Command 8 — Test Strategy & Build Rails (PROPOSAL for review)
+# Command 8 — Test Strategy & Build Rails (✅ APPROVED & LOCKED 2026-06-06)
 
-> **STATUS: PROPOSAL — NOT APPROVED.** This is the **rail**: tests/specs authored **before** implementation, each
-> tied to the spec it validates, so the build can't drift. **U1:** verified against live June 2026 testing tooling
+> **STATUS: ✅ APPROVED 2026-06-06 (John). No test code yet.** Governs Command 9 (CI enforces these gates) + every
+> build phase. **Decisions:** patch/differential coverage gate · open-source security set + SDD tests-as-rail ·
+> **dogfood John's Preflight tool** as a security scanner + comparative. This is the **rail**: tests/specs authored
+> **before** implementation, each tied to the spec it validates, so the build can't drift. **U1:** verified against live June 2026 testing tooling
 > (Vitest 4, `@cloudflare/vitest-pool-workers` 0.16.x, Playwright, MSW v2, Neon branches, pgTAP, axe-core) — cited
 > in notes. Governs Command 9 (DevOps/CI) which enforces these gates, and every build phase.
 
@@ -26,7 +28,7 @@
 | **Component** | **React Testing Library + Vitest** (query by role/label, not MUI internals); Vitest Browser Mode; **Astro Container API** for `.astro` | UI behavior + accessible output |
 | **E2E** | **Playwright** (`context.setOffline`; SW network events flag for offline-queue) | full flows: quote form, login, field report sync/proof-of-send, 3D explorer |
 | **Logic / domain** | Vitest + pgTAP | install validation, vehicle_type/JSONB attribute rules, event-taxonomy gating |
-| **Security** | pgTAP (RLS) · Trivy (SCA) · Semgrep CE (SAST) · Gitleaks (secrets) · OWASP ZAP (DAST) · Checkov (IaC) | controls from Command 3 (incl. **tenant-isolation RLS tests**) |
+| **Security** | **Preflight** (AI-code SAST — dogfood + comparative) · pgTAP (RLS) · Trivy (SCA) · Semgrep CE (SAST) · Gitleaks (secrets) · OWASP ZAP (DAST) · Checkov (IaC) | controls from Command 3 (incl. **tenant-isolation RLS tests**) |
 | **Accessibility** | **`@axe-core/playwright`** (WCAG 2.2 tags) + **Lighthouse CI** + manual | the locked WCAG 2.2 AA bar |
 | **Regression** | the accumulated suite, run on every change | nothing previously fixed breaks |
 
@@ -39,6 +41,13 @@
   experimental — flag enabled.)
 - **Contract conformance** — every endpoint's live response validated against its OpenAPI schema (AJV).
 - **CWV / perf budgets** — Lighthouse CI gates LCP/INP/CLS + the JS payload budget (SEO/GEO §54–63).
+- **Preflight (dogfood + comparative)** — John's AI-code SAST (`preflight.midatlantic.ai` ·
+  `github.com/midatlanticai/preflight`, MIT). 96 probes: hardcoded secrets, **RLS misconfig**, supply-chain
+  (~170 compromised package versions), missing auth guards on admin/API routes, CORS/SSRF/headers, and **AI-specific
+  risks** (prompt injection, `NEXT_PUBLIC_`/client-component key exposure, MCP). Especially apt here: this platform is
+  **AI-built** and **RLS-critical**, both of which Preflight targets directly. Run via its **GitHub Action** as a
+  security-scan gate; manage findings with **`.preflight.yml`** suppression + PR-comment export. **Comparative:** track
+  Preflight findings vs Semgrep/Trivy/Gitleaks to measure overlap + unique catches (dogfooding feedback to the tool).
 
 ## D. Coverage targets
 - **~80% line/branch** as the project *ceiling* (diminishing returns past it) — **but the merge GATE is
@@ -69,10 +78,11 @@ Cache deps + Playwright browsers · **shard** Playwright across a matrix · para
 **Neon branch per PR** for the DB job · branch protection requires test + **patch-coverage** + **security-scan** + a11y
 checks before merge.
 
-## I. Decisions for your review
-1. **Coverage gate = patch/differential** coverage of changed lines (+ ~80% project ceiling), not a hard project-% gate? *(Recommend yes.)*
-2. **Security tool set:** Trivy + Semgrep CE + Gitleaks + OWASP ZAP + Checkov (all open-source, right-sized)? *(Recommend yes.)*
-3. **SDD "tests-as-rail"** (contract = spec, tests before code, each test cites its spec) as the binding workflow? *(Recommend yes — it's the persona's "tests first" made concrete.)*
+## I. Decisions — ✅ RESOLVED 2026-06-06
+1. **Coverage gate — ✅ patch/differential** coverage of changed lines (+ ~80% project ceiling guide).
+2. **Security tool set — ✅ open-source set** (Trivy · Semgrep CE · Gitleaks · OWASP ZAP · Checkov) **+ Preflight**
+   (John's tool — dogfood + comparative vs the others).
+3. **SDD "tests-as-rail" — ✅ adopted** (contract = spec; tests before code; each test cites its spec).
 
 ## J. Definition of Complete (U2)
 Done when: test pyramid by type + tools ✓ · the critical platform tests (RLS isolation, offline replay, contract, CWV)
