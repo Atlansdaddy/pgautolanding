@@ -46,7 +46,15 @@
       "WebFetch(domain:www.turbogeek.co.uk)",
       "WebFetch(domain:www.firecrawl.dev)",
       "WebFetch(domain:baymard.com)",
-      "WebFetch(domain:www.trydeepteam.com)"
+      "WebFetch(domain:www.trydeepteam.com)",
+      "Bash(npm i *)",
+      "Bash(pnpm -v)",
+      "Bash(echo \"pnpm: $\\(pnpm -v 2>&1\\)\")",
+      "Bash(pnpm install *)",
+      "Bash(pnpm build *)",
+      "Bash(pnpm typecheck *)",
+      "Bash(pnpm lint *)",
+      "Bash(pnpm test *)"
     ]
   }
 }

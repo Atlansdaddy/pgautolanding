@@ -1,0 +1,8 @@
+# P.G. Auto Installs — pnpm workspace (Command 2 monorepo topology).
+# apps/     = deployable surfaces (marketing site, portals, field PWA)
+# services/ = Cloudflare Workers (svc-leads, svc-auth, svc-installs, ...)
+# packages/ = shared libraries (tokens, api-types, config, ui primitives)
+packages:
+  - "apps/*"
+  - "services/*"
+  - "packages/*"

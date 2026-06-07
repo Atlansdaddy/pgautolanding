@@ -1,4 +1,26 @@
+# Dependencies
 node_modules/
+
+# Build output
+dist/
+.astro/
+*.tsbuildinfo
+
+# Turborepo
+.turbo/
+
+# Test / coverage
+coverage/
+
+# Cloudflare / Wrangler
 .wrangler/
+.dev.vars
+
+# Local env
+.env
+.env.*
+!.env.example
+
+# Editor / OS
 .DS_Store
 *.log

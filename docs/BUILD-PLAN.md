@@ -5,14 +5,14 @@
 > spec**, **flag — don't invent** anything marked 🔒 DECISION REQUIRED. Check a box only when the
 > task meets the **Definition of Done** (persona §8). Update this file as decisions lock.
 
-> ## ▶️ RESUME HERE (saved 2026-06-06)
-> **All planning/design commands 0–10 are ✅ LOCKED.** Nothing in flight; repo clean + pushed to
-> `github.com/Atlansdaddy/pgautolanding` (main). **Next session:** start **Command 11 — Task Breakdown for Phase 1
-> (marketing website)** — break Phase 1 into objectives→tasks→steps (each with sources, best practices, DoD, and the
-> Command 8 tests it must satisfy), then begin building per the locked specs. **Still pending input (non-blocking):**
-> real PG header **phone number**; NC = Charlotte+Raleigh (done); exhaustive vehicle-type/field lists fill in via JSONB
-> as encountered. **To resume, just say "continue" / "start Command 11."** Persona = `.claude/agents/pg-build-agent.md`
-> (Sterling). All context is in `docs/` + memory.
+> ## ▶️ RESUME HERE (updated 2026-06-07)
+> **Commands 0–11 ✅ LOCKED.** **Phase 1 BUILD IN PROGRESS** per
+> [COMMAND-11-PHASE-1-TASKS.md](./COMMAND-11-PHASE-1-TASKS.md) (approved 2026-06-07; D1–D3 resolved). **Current task:
+> O0/T0.1 — monorepo scaffold** (pnpm 10 + Turborepo; apps/services/packages). Build order = O0 Foundations → O1 Astro
+> app → O2 components → O3 home → O4 interior (incl. 12 metros) → O5 islands → O6 lead capture (form + svc-leads on
+> R2+email) → O7 release gate. **Tests-first per task; stop for review after each task.** **Pending from John
+> (non-blocking, each due at its task):** header **phone number** (T2.1) · lead **recipient + email provider** (T6.2)
+> · real **regional photos** (T4.3). Persona = `.claude/agents/pg-build-agent.md` (Sterling). Context in `docs/` + memory.
 
 Legend: `[ ]` todo · `[~]` in progress · `[x]` done · 🔒 blocked on a human decision · 🚪 gate.
 
@@ -30,7 +30,7 @@ adversarial gate expanded. Business-observability command was considered and dec
 - **Command 8 — Test Strategy & Build Rails** → [x] **✅ LOCKED 2026-06-06**: [COMMAND-8-TESTS.md](./COMMAND-8-TESTS.md) (Vitest4 + workers-pool · Playwright · pgTAP RLS · **Preflight** + OSS security set · patch-coverage gate · SDD tests-as-rail · Neon-branch test DBs).
 - **Command 9 — DevOps, Logging & CI/CD** → [x] **✅ LOCKED 2026-06-06**: [COMMAND-9-DEVOPS.md](./COMMAND-9-DEVOPS.md) (Turborepo affected CI · Wrangler gradual deploy+rollback · scoped API token · Workers Logs+trace IDs+Logpush · Hono onError→RFC 9457 · OTel deferred).
 - **Command 10 — Adversarial Hardening Gate** → [x] **✅ LOCKED 2026-06-06**: [COMMAND-10-ADVERSARIAL.md](./COMMAND-10-ADVERSARIAL.md) (5 lenses · context-free randomized agents · staging-only containment · GitHub env-protection gate · feedback loop).
-- **Command 11 — Task Breakdown** → ⏭️ **NEXT** (applied per approved phase — start with Phase 1 marketing site).
+- **Command 11 — Task Breakdown** → [x] **✅ LOCKED 2026-06-07** (Phase 1): [COMMAND-11-PHASE-1-TASKS.md](./COMMAND-11-PHASE-1-TASKS.md) (8 objectives · 25 tasks · dependency-ordered · each w/ DoD + Command 8 tests · D1–D3 resolved). **▶️ BUILDING — O0/T0.1 monorepo scaffold.**
 - **Command 2 — Architecture Blueprint** — service map, stacks-per-service, DRY/shared contracts, security touchpoints.
 - **Command 3 — Security Design** — threat model per surface, authN/Z, secrets, controls matrix, residual risk.
 - **Command 4 — Messaging & Content Architecture** 🆕 *(inserted before Design)* — homepage copy, proof
@@ -56,8 +56,8 @@ adversarial gate expanded. Business-observability command was considered and dec
 
 - [x] Save Build Agent persona as the main worker agent (`.claude/agents/pg-build-agent.md`)
 - [x] Landing-page preview shipped to GitHub (`Atlansdaddy/pgautolanding`) + Cloudflare-ready
-- [ ] **Repo & workspace topology decided** — monorepo vs multi-repo for the 4 systems + shared
-  Workers/types. Propose, get approval. *(piece-by-piece, one proposal)*
+- [x] **Repo & workspace topology decided** — monorepo (Command 2); **scaffolded 2026-06-07 (T0.1)**: pnpm 10 +
+  Turborepo, `apps/`·`services/`·`packages/`, shared `tsconfig.base.json`, LF `.gitattributes`, green empty graph.
 - [ ] **CI/CD skeleton** — lint + typecheck + test + build + deploy gates wired (empty-but-green)
   before feature code. Nothing deploys by hand.
 - [ ] **Shared-types codegen path** proven (OpenAPI / ts-rs across Rust↔TS) with one trivial

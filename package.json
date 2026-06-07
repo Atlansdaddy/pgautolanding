@@ -1,13 +1,22 @@
 {
-  "name": "pgautolanding",
-  "version": "1.0.0",
+  "name": "pgauto",
+  "version": "0.0.0",
   "private": true,
-  "description": "P.G. Auto Installs — Fleet Telematics Installation landing page",
+  "description": "P.G. Auto Installs — platform monorepo (marketing site, field reporting, tech portal, admin portal).",
+  "packageManager": "pnpm@10.34.1",
+  "engines": {
+    "node": ">=22.11.0"
+  },
   "scripts": {
-    "start": "npx serve .",
-    "deploy": "wrangler deploy"
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "build": "turbo run build",
+    "deploy:legacy": "wrangler deploy"
   },
   "devDependencies": {
+    "turbo": "^2.3.0",
+    "typescript": "^5.7.0",
     "wrangler": "^4.0.0"
   }
 }
