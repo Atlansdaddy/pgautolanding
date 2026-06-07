@@ -1,6 +1,10 @@
-# Command 10 — Adversarial Hardening Gate (PROPOSAL for review)
+# Command 10 — Adversarial Hardening Gate (✅ APPROVED & LOCKED 2026-06-06)
 
-> **STATUS: PROPOSAL — NOT APPROVED.** The signature pre-deploy defense: independent, **context-free, randomized-goal**
+> **STATUS: ✅ APPROVED 2026-06-06 (John).** **Decisions:** discovery agents (Browser Use/Stagehand on Playwright
+> MCP) → harden to Playwright tests · zero-tolerance critical/high blocks deploy (context-based severity) · agents
+> **containerized + staging-only + scoped-creds + domain-allowlisted** (hard boundary) · AI-feature red-teaming
+> **out of scope** until PG ships an LLM feature. **All design commands (0–10) are now complete.** The signature
+> pre-deploy defense: independent, **context-free, randomized-goal**
 > agents try to break the site **on staging only** before any full deploy; a clean pass is a release requirement.
 > **U1:** verified against live June 2026 practice (Browser Use/Stagehand on Playwright MCP, OWASP ZAP automation,
 > Lighthouse CI, Baymard/NN/g, OWASP Agentic Top 10 2026) — cited in notes. Wires into the Command 9 deploy gate.
@@ -66,13 +70,11 @@ guarantees. Randomized-goal UX/conversion probing is **emerging** — assembled 
 goal-generator, not bought off-the-shelf. AI-feature red-teaming (OWASP LLM Top 10) is **out of scope until/unless** PG
 ships an LLM feature (e.g., a quote assistant) — flagged for re-scope if that changes.
 
-## H. Decisions for your review
-1. **Autonomous-agent tooling:** Browser Use / Stagehand on Playwright MCP for the discovery lens (discover → harden to
-   Playwright tests)? *(Recommend yes.)*
-2. **Gate strictness:** zero-tolerance critical/high blocks deploy, medium/low tracked, context-based severity? *(Recommend yes.)*
-3. **Containment:** agents run **containerized, staging-only, staging-scoped creds, domain-allowlisted** — confirm this
-   is a hard infrastructure boundary (not negotiable)? *(Recommend yes.)*
-4. **AI-feature red-teaming:** out of scope until PG ships an LLM feature — confirm? *(Recommend yes.)*
+## H. Decisions — ✅ RESOLVED 2026-06-06
+1. **Autonomous-agent tooling — ✅ Browser Use / Stagehand on Playwright MCP** (discover → harden to Playwright tests).
+2. **Gate strictness — ✅ zero-tolerance critical/high** blocks deploy; medium/low tracked; **context-based severity**.
+3. **Containment — ✅ containerized, staging-only, staging-scoped creds, domain-allowlisted** (hard infra boundary).
+4. **AI-feature red-teaming — ✅ out of scope** until PG ships an LLM feature (re-scope then).
 
 ## I. Definition of Complete (U2)
 Done when: the 5 lenses defined ✓ · harness (autonomous agents + deterministic scanners + heuristic auditors) ✓ ·

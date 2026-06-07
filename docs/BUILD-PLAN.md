@@ -5,6 +5,15 @@
 > spec**, **flag — don't invent** anything marked 🔒 DECISION REQUIRED. Check a box only when the
 > task meets the **Definition of Done** (persona §8). Update this file as decisions lock.
 
+> ## ▶️ RESUME HERE (saved 2026-06-06)
+> **All planning/design commands 0–10 are ✅ LOCKED.** Nothing in flight; repo clean + pushed to
+> `github.com/Atlansdaddy/pgautolanding` (main). **Next session:** start **Command 11 — Task Breakdown for Phase 1
+> (marketing website)** — break Phase 1 into objectives→tasks→steps (each with sources, best practices, DoD, and the
+> Command 8 tests it must satisfy), then begin building per the locked specs. **Still pending input (non-blocking):**
+> real PG header **phone number**; NC = Charlotte+Raleigh (done); exhaustive vehicle-type/field lists fill in via JSONB
+> as encountered. **To resume, just say "continue" / "start Command 11."** Persona = `.claude/agents/pg-build-agent.md`
+> (Sterling). All context is in `docs/` + memory.
+
 Legend: `[ ]` todo · `[~]` in progress · `[x]` done · 🔒 blocked on a human decision · 🚪 gate.
 
 **Command sequence** (each opens with U1 Currency Gate, closes with U2 Definition-of-Complete matrix).
@@ -20,7 +29,8 @@ adversarial gate expanded. Business-observability command was considered and dec
 - **Command 7 — Data Architecture** → [x] **✅ LOCKED 2026-06-05**: [COMMAND-7-DATA.md](./COMMAND-7-DATA.md) (canonical schema centered on **dash cam installs** · units+install_records+install_events · JSONB type-specific attrs · config-toggleable events · multi-tenant RLS · PostGIS · drizzle migrations).
 - **Command 8 — Test Strategy & Build Rails** → [x] **✅ LOCKED 2026-06-06**: [COMMAND-8-TESTS.md](./COMMAND-8-TESTS.md) (Vitest4 + workers-pool · Playwright · pgTAP RLS · **Preflight** + OSS security set · patch-coverage gate · SDD tests-as-rail · Neon-branch test DBs).
 - **Command 9 — DevOps, Logging & CI/CD** → [x] **✅ LOCKED 2026-06-06**: [COMMAND-9-DEVOPS.md](./COMMAND-9-DEVOPS.md) (Turborepo affected CI · Wrangler gradual deploy+rollback · scoped API token · Workers Logs+trace IDs+Logpush · Hono onError→RFC 9457 · OTel deferred).
-- **Command 10 — Adversarial Hardening Gate** → ⏭️ **NEXT**.
+- **Command 10 — Adversarial Hardening Gate** → [x] **✅ LOCKED 2026-06-06**: [COMMAND-10-ADVERSARIAL.md](./COMMAND-10-ADVERSARIAL.md) (5 lenses · context-free randomized agents · staging-only containment · GitHub env-protection gate · feedback loop).
+- **Command 11 — Task Breakdown** → ⏭️ **NEXT** (applied per approved phase — start with Phase 1 marketing site).
 - **Command 2 — Architecture Blueprint** — service map, stacks-per-service, DRY/shared contracts, security touchpoints.
 - **Command 3 — Security Design** — threat model per surface, authN/Z, secrets, controls matrix, residual risk.
 - **Command 4 — Messaging & Content Architecture** 🆕 *(inserted before Design)* — homepage copy, proof
