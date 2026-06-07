@@ -1,10 +1,30 @@
 {
   "color": {
-    "pg-blue": { "$value": "#2D8FCC", "$type": "color", "$description": "PG Blue — primary brand color" },
-    "pg-navy": { "$value": "#1A1A2E", "$type": "color", "$description": "PG Dark Navy — structure/dark" },
-    "action-orange": { "$value": "#FF6B35", "$type": "color", "$description": "Action Orange — CTA/focal only (~10%); never backgrounds or body text (contrast)" },
-    "pg-sky": { "$value": "#E8F4FD", "$type": "color", "$description": "PG Sky — light subtle surface" },
-    "charcoal": { "$value": "#333333", "$type": "color", "$description": "Charcoal — default body text" },
+    "pg-blue": {
+      "$value": "#2D8FCC",
+      "$type": "color",
+      "$description": "PG Blue — primary brand color"
+    },
+    "pg-navy": {
+      "$value": "#1A1A2E",
+      "$type": "color",
+      "$description": "PG Dark Navy — structure/dark"
+    },
+    "action-orange": {
+      "$value": "#FF6B35",
+      "$type": "color",
+      "$description": "Action Orange — CTA/focal only (~10%); never backgrounds or body text (contrast)"
+    },
+    "pg-sky": {
+      "$value": "#E8F4FD",
+      "$type": "color",
+      "$description": "PG Sky — light subtle surface"
+    },
+    "charcoal": {
+      "$value": "#333333",
+      "$type": "color",
+      "$description": "Charcoal — default body text"
+    },
     "white": { "$value": "#FFFFFF", "$type": "color", "$description": "White — default surface" }
   },
   "font": {

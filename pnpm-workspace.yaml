@@ -3,6 +3,6 @@
 # services/ = Cloudflare Workers (svc-leads, svc-auth, svc-installs, ...)
 # packages/ = shared libraries (tokens, api-types, config, ui primitives)
 packages:
-  - "apps/*"
-  - "services/*"
-  - "packages/*"
+  - 'apps/*'
+  - 'services/*'
+  - 'packages/*'

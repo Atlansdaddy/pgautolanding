@@ -1,0 +1,15 @@
+# Generated / vendored
+**/dist/**
+**/node_modules/**
+**/.turbo/**
+**/.astro/**
+**/coverage/**
+pnpm-lock.yaml
+
+# Docs keep their hand-tuned formatting
+docs/**
+
+# Legacy single-file preview (huge; migrated in T1.1)
+index.html
+build-your-protection.html
+assets/**

@@ -8,9 +8,13 @@
     ".": "./dist/theme.ts",
     "./css": "./dist/tokens.css"
   },
-  "files": ["dist", "tokens"],
+  "files": [
+    "dist",
+    "tokens"
+  ],
   "scripts": {
     "build": "node build-tokens.mjs",
+    "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
   },

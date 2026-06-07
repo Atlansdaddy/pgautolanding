@@ -1,0 +1,4 @@
+# Spectral ruleset for OpenAPI linting (Command 9).
+# Wired into CI once the first OpenAPI spec lands (svc-leads, T6.2). Until then there is
+# nothing to lint; the dependency + CI step are added with that service.
+extends: ['spectral:oas']

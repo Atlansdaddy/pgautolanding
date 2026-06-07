@@ -2,6 +2,7 @@
   "name": "pgauto",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "description": "P.G. Auto Installs — platform monorepo (marketing site, field reporting, tech portal, admin portal).",
   "packageManager": "pnpm@10.34.1",
   "engines": {
@@ -12,11 +13,19 @@
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
     "build": "turbo run build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "deploy:legacy": "wrangler deploy"
   },
   "devDependencies": {
+    "@eslint/js": "^9.16.0",
+    "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.13.0",
+    "prettier": "^3.4.0",
     "turbo": "^2.3.0",
     "typescript": "^5.7.0",
+    "typescript-eslint": "^8.18.0",
     "wrangler": "^4.0.0"
   },
   "pnpm": {

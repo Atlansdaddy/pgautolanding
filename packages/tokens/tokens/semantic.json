@@ -1,19 +1,55 @@
 {
   "brand": {
-    "primary": { "$value": "{color.pg-blue}", "$type": "color", "$description": "Primary brand — links, primary UI" },
-    "dark": { "$value": "{color.pg-navy}", "$type": "color", "$description": "Dark structure — headers, footers" }
+    "primary": {
+      "$value": "{color.pg-blue}",
+      "$type": "color",
+      "$description": "Primary brand — links, primary UI"
+    },
+    "dark": {
+      "$value": "{color.pg-navy}",
+      "$type": "color",
+      "$description": "Dark structure — headers, footers"
+    }
   },
-  "action": { "$value": "{color.action-orange}", "$type": "color", "$description": "CTA/focal accent (~10% rule); NOT for backgrounds or body text" },
+  "action": {
+    "$value": "{color.action-orange}",
+    "$type": "color",
+    "$description": "CTA/focal accent (~10% rule); NOT for backgrounds or body text"
+  },
   "surface": {
-    "default": { "$value": "{color.white}", "$type": "color", "$description": "Default page surface" },
-    "subtle": { "$value": "{color.pg-sky}", "$type": "color", "$description": "Subtle/alternate surface" }
+    "default": {
+      "$value": "{color.white}",
+      "$type": "color",
+      "$description": "Default page surface"
+    },
+    "subtle": {
+      "$value": "{color.pg-sky}",
+      "$type": "color",
+      "$description": "Subtle/alternate surface"
+    }
   },
   "text": {
-    "default": { "$value": "{color.charcoal}", "$type": "color", "$description": "Default body text" },
-    "on-brand": { "$value": "{color.white}", "$type": "color", "$description": "Text on dark/brand fills" }
+    "default": {
+      "$value": "{color.charcoal}",
+      "$type": "color",
+      "$description": "Default body text"
+    },
+    "on-brand": {
+      "$value": "{color.white}",
+      "$type": "color",
+      "$description": "Text on dark/brand fills"
+    }
   },
   "font": {
-    "display": { "$value": "{font.family.montserrat}", "$type": "fontFamily", "$description": "Headings, eyebrow labels" },
-    "body": { "$value": "{font.family.open-sans}", "$type": "fontFamily", "$description": "Body copy" }
+    "display": {
+      "$value": "{font.family.montserrat}",
+      "$type": "fontFamily",
+      "$description": "Headings, eyebrow labels"
+    },
+    "body": {
+      "$value": "{font.family.open-sans}",
+      "$type": "fontFamily",
+      "$description": "Body copy"
+    }
   }
 }

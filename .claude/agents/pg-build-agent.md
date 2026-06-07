@@ -52,9 +52,9 @@ security, test coverage, or clarity for velocity.
 
 Four systems, built in this order:
 
-1. **Marketing website** — public site. Astro on **Cloudflare Workers Static Assets** (not Pages). *(Build first.)*
+1. **Marketing website** — public site. Astro on **Cloudflare Workers Static Assets** (not Pages). _(Build first.)_
 2. **Field Reporting System** — the "Field Emailer" rebuild; offline-first PWA for techs.
-   *(First backend.)*
+   _(First backend.)_
 3. **Tech portal** — jobs, field logging, documentation for technicians.
 4. **Admin portal** — dispatch, QA, multi-tenant operations.
 
@@ -65,18 +65,18 @@ All four share one backend (microservice Workers + one Postgres) and one design 
 
 ## 4. Locked Stack (the law of the land)
 
-| Layer | Decision | Why |
-|---|---|---|
-| Host | **Cloudflare** — **Workers Static Assets** (NOT Pages — retired), R2, Hyperdrive, Durable Objects, Queues | Cheapest; **R2 has no egress fees** (critical for heavy install photos); edge perf |
-| Marketing site | **Astro** (SSG/SSR) + React & three.js as **islands** | SEO/GEO-ideal, ships minimal JS, lazy-load the interactive 3D |
-| Portals + field app | **React + MUI v9** | MUI earns its place in dense tables/forms; **never on the marketing site** |
-| Backend | **Microservice Workers — TypeScript/Hono FIRST**; **Rust (workers-rs) DEFERRED** to a measured CPU-bound hot path only | Right tool per service; Rust "not production-ready" + WASM overhead → defer (Command 2) |
-| Shared types | **OpenAPI codegen** (+ ts-rs if Rust lands) across the boundary | DRY; one source of truth for types |
-| Database | **Neon Postgres + PostGIS**, via **Hyperdrive** | Relational integrity + geospatial for telematics; Hyperdrive is GA + free |
-| Repo | **Monorepo** (pnpm workspaces + Turborepo): `apps/` · `services/` · `packages/` | Shared OpenAPI types; resolves repo topology (Command 2) |
-| Auth | **In-house**, on **vetted primitives** (Argon2id-WASM, passkeys+password, EdDSA JWT) — **Workers Paid required** | Full control — see hard rule + Command 3 |
-| Media | **R2** | No-egress storage for photos (**no gaussian splats — out of scope**) |
-| Long-running jobs | **Existing DO droplets via free Cloudflare Tunnel** (CF Containers secondary) | e.g., telematics ingestion. No GPU/splat work (Command 2 + cost-benefit) |
+| Layer               | Decision                                                                                                               | Why                                                                                     |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Host                | **Cloudflare** — **Workers Static Assets** (NOT Pages — retired), R2, Hyperdrive, Durable Objects, Queues              | Cheapest; **R2 has no egress fees** (critical for heavy install photos); edge perf      |
+| Marketing site      | **Astro** (SSG/SSR) + React & three.js as **islands**                                                                  | SEO/GEO-ideal, ships minimal JS, lazy-load the interactive 3D                           |
+| Portals + field app | **React + MUI v9**                                                                                                     | MUI earns its place in dense tables/forms; **never on the marketing site**              |
+| Backend             | **Microservice Workers — TypeScript/Hono FIRST**; **Rust (workers-rs) DEFERRED** to a measured CPU-bound hot path only | Right tool per service; Rust "not production-ready" + WASM overhead → defer (Command 2) |
+| Shared types        | **OpenAPI codegen** (+ ts-rs if Rust lands) across the boundary                                                        | DRY; one source of truth for types                                                      |
+| Database            | **Neon Postgres + PostGIS**, via **Hyperdrive**                                                                        | Relational integrity + geospatial for telematics; Hyperdrive is GA + free               |
+| Repo                | **Monorepo** (pnpm workspaces + Turborepo): `apps/` · `services/` · `packages/`                                        | Shared OpenAPI types; resolves repo topology (Command 2)                                |
+| Auth                | **In-house**, on **vetted primitives** (Argon2id-WASM, passkeys+password, EdDSA JWT) — **Workers Paid required**       | Full control — see hard rule + Command 3                                                |
+| Media               | **R2**                                                                                                                 | No-egress storage for photos (**no gaussian splats — out of scope**)                    |
+| Long-running jobs   | **Existing DO droplets via free Cloudflare Tunnel** (CF Containers secondary)                                          | e.g., telematics ingestion. No GPU/splat work (Command 2 + cost-benefit)                |
 
 **Field transport:** the rebuilt field app **never uses `mailto:`**. A tech action writes to an
 offline cache → syncs to the Workers API when there's signal → real proof-of-send, retry, and
@@ -121,7 +121,7 @@ server-side logging. This is the core functional upgrade over the legacy app.
   cite every source. Flag anything contested, recently changed, or deprecated; current cited guidance
   beats prior assumptions. Applies to architecture, security, data, testing, DevOps, and design — not
   just SEO/GEO. (Skill 9 — Currency-checking.)
-- **U2 — Definition of Complete.** Close every command/task by stating what *complete* means as a
+- **U2 — Definition of Complete.** Close every command/task by stating what _complete_ means as a
   **levels × aspects matrix**, each cell concrete, measurable, and linked to the test that proves it.
   Levels: **L0 Platform · L1 Surface · L2 Service · L3 Component.** Aspects: functionality · security ·
   performance (to today's cited thresholds) · accessibility (today's WCAG, cited) · SEO/GEO · data
@@ -134,7 +134,7 @@ server-side logging. This is the core functional upgrade over the legacy app.
 
 - **Bright and clean. No dark mode.** Light base.
 - **Tasteful business-color gradient backgrounds**, anchored to the Brand Kit palette (PG Blue / PG
-  Sky / Action Orange) — soft, professional, *not* dark washes and *not* gimmicks.
+  Sky / Action Orange) — soft, professional, _not_ dark washes and _not_ gimmicks.
 - **Copy scrolls in from the sides**, alternating left→right then right→left down the page.
 - **Keep the banners/marquees** — tune spacing and weight; don't remove them.
 - **Mobile-first, always.** Touch controls; `touch-action:none` on 3D; tappable hotspots + a list;
@@ -174,6 +174,7 @@ server-side logging. This is the core functional upgrade over the legacy app.
 ## 8. Definition of Done (every task)
 
 A task is complete only when **all** are true:
+
 - Meets its written acceptance criteria.
 - Its tests (the ones spec'd first) pass and hit the coverage target.
 - Lint + typecheck clean; CI green.
@@ -188,7 +189,7 @@ A task is complete only when **all** are true:
 
 ## 9. Hard "Never" List
 
-- **Never hand-roll cryptography.** In-house auth means *vetted primitives* — Argon2id for password
+- **Never hand-roll cryptography.** In-house auth means _vetted primitives_ — Argon2id for password
   hashing, standard/audited JWT or session handling with refresh-token rotation, rate limiting,
   MFA-ready — assembled correctly, not invented.
 - **Never invent copy, stats, taglines, or product specs.** Prove or omit.
@@ -212,7 +213,7 @@ A task is complete only when **all** are true:
 - **PG Master Strategy** doc (positioning, proof assets, sequencing).
 - **AI Slop Diagnostic Catalog** (anti-slop rules — governing).
 - **Field Emailer audit** (legacy app behavior + the bugs/limits the rebuild must resolve).
-- **SEO/GEO compliance file** *(to be produced and approved before marketing build).*
+- **SEO/GEO compliance file** _(to be produced and approved before marketing build)._
 - Platform docs: Cloudflare (Workers/Pages/R2/Hyperdrive/D1/Durable Objects/Queues), Astro,
   Neon + PostGIS, workers-rs, Hono, MUI.
 - Manufacturer **partner/installer brand kits** (Motive, Samsara, Netradyne).
@@ -224,6 +225,7 @@ When a task uses any of these, cite the specific source and the guideline applie
 ## 11. Pending / To-Be-Decided (flag, don't invent)
 
 These are not yet locked — the agent must request a decision before relying on them:
+
 - **Field Reporting data model** — the canonical install-event schema (generalizing legacy
   `chassis` → `units` + `vehicle_type`, with per-device `install_records` and type-specific fields).
   Draft in progress; **not finalized.**
@@ -237,4 +239,4 @@ These are not yet locked — the agent must request a decision before relying on
 
 ---
 
-*v1 — extend as decisions lock. This document is the spec the structured command prompts execute against.*
+_v1 — extend as decisions lock. This document is the spec the structured command prompts execute against._

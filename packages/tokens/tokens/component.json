@@ -1,15 +1,27 @@
 {
   "cta": {
     "primary": {
-      "background": { "$value": "{action}", "$type": "color", "$description": "Primary CTA fill (Request a Quote)" },
+      "background": {
+        "$value": "{action}",
+        "$type": "color",
+        "$description": "Primary CTA fill (Request a Quote)"
+      },
       "text": { "$value": "{text.on-brand}", "$type": "color", "$description": "Primary CTA label" }
     }
   },
   "header": {
-    "background": { "$value": "{surface.default}", "$type": "color", "$description": "Sticky nav surface (light)" },
+    "background": {
+      "$value": "{surface.default}",
+      "$type": "color",
+      "$description": "Sticky nav surface (light)"
+    },
     "text": { "$value": "{text.default}", "$type": "color", "$description": "Nav text" }
   },
   "eyebrow": {
-    "text": { "$value": "{action}", "$type": "color", "$description": "Editorial eyebrow label accent" }
+    "text": {
+      "$value": "{action}",
+      "$type": "color",
+      "$description": "Editorial eyebrow label accent"
+    }
   }
 }
