@@ -64,7 +64,12 @@
       "PowerShell($nvm = Get-Command nvm -ErrorAction SilentlyContinue; if \\($nvm\\) { \"nvm found: $\\($nvm.Source\\)\"; nvm list } else { \"nvm NOT installed\" }; \"winget: \" + \\(\\(Get-Command winget -ErrorAction SilentlyContinue\\).Source\\))",
       "PowerShell(nvm *)",
       "Bash(pnpm --filter @pg/tokens typecheck)",
-      "Bash(pnpm --filter @pg/tokens test)"
+      "Bash(pnpm --filter @pg/tokens test)",
+      "PowerShell($v = Get-Command volta -ErrorAction SilentlyContinue; if \\($v\\) { \"volta: $\\($v.Source\\)\"; volta --version } else { \"volta NOT installed\" }; \"LOCALAPPDATA volta bin exists: \" + \\(Test-Path \"$env:LOCALAPPDATA\\\\Volta\\\\bin\"\\))",
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell($volta = \"$env:LOCALAPPDATA\\\\Volta\\\\bin\\\\volta.exe\"; Set-Location \"C:\\\\Users\\\\jviru\\\\PGAuto\"; & $volta --version; \"--- pinning node@22 ---\"; & $volta pin node@22; \"--- pinning pnpm@10 ---\"; & $volta pin pnpm@10)",
+      "PowerShell(winget list *)",
+      "PowerShell($volta = \"C:\\\\Program Files\\\\Volta\\\\volta.exe\"; Set-Location \"C:\\\\Users\\\\jviru\\\\PGAuto\"; \"volta: \" + \\(& $volta --version\\); \"--- pin node@22 ---\"; & $volta pin node@22; \"--- pin pnpm@10 ---\"; & $volta pin pnpm@10)"
     ]
   }
 }

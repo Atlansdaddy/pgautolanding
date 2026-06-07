@@ -9,8 +9,9 @@
 > **Commands 0–11 ✅ LOCKED.** **Phase 1 BUILD IN PROGRESS** per
 > [COMMAND-11-PHASE-1-TASKS.md](./COMMAND-11-PHASE-1-TASKS.md) (approved 2026-06-07; D1–D3 resolved). **Done: T0.1
 > monorepo scaffold · T0.2 token pipeline. Current task: O0/T0.3 — CI green-skeleton** (GitHub Actions: ESLint flat +
-> Prettier + Spectral, Turborepo `--affected` lint→typecheck→test→build). ⚠️ Node 22.11 < 22.12 → interim Vitest 3.2
-> + Vite 6 override until John bumps Node (then Vitest 4). Build order = O0 Foundations → O1 Astro
+> Prettier + Spectral, Turborepo `--affected` lint→typecheck→test→build). **Toolchain pinned via Volta** (Node 22.22.3
+> in `package.json` volta field + pnpm 10.34.1); locked **Vitest 4** active. In-session shells: prepend
+> `/c/Program Files/Volta` to PATH so plain `pnpm`/`node` use the pinned versions. Build order = O0 Foundations → O1 Astro
 > app → O2 components → O3 home → O4 interior (incl. 12 metros) → O5 islands → O6 lead capture (form + svc-leads on
 > R2+email) → O7 release gate. **Tests-first per task; stop for review after each task.** **Pending from John
 > (non-blocking, each due at its task):** header **phone number** (T2.1) · lead **recipient + email provider** (T6.2)

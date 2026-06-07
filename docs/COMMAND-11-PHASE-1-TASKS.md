@@ -49,12 +49,16 @@ material into the locked architecture and standards. We **keep its character** (
 reveals, 3D explorer + `#ixlist`, progress bar, reduced-motion), **tune** banners + reveal timing, and **swap**
 images/fonts/3D to locked performance standards (Command 5 §A). We do **not** restyle it into a generic template.
 
-### ⚠️ Build-environment note (surfaced at T0.2, 2026-06-07)
-Local Node is **22.11.0**; Vite 7 / **Vitest 4** (Command 8 lock) require **Node ≥22.12**. To keep the rail moving
-without risking the system Node, the toolchain runs an **interim pin: Vitest 3.2 + Vite 6** (works on 22.11) via a
-root `pnpm.overrides` (`vite: ^6.3.0`). **Action for John (non-blocking):** bump Node to current 22 LTS (e.g.
-`nvm install 22.20.0 && nvm use 22.20.0`, or winget Node LTS), then drop the override and move `vitest` to `^4` —
-a one-line change. Until then we are *behind* the locked Vitest 4 by intent, flagged here.
+### ✅ Build-environment — Volta toolchain pin (resolved at T0.2, 2026-06-07)
+The repo uses **Volta** (John's choice) as the venv-equivalent toolchain pin, so every machine/CI runs the identical
+Node. **Node is pinned to 22.22.3** in `package.json` (`volta.node`) — satisfies the **Node ≥22.12** that Vite 7 /
+**Vitest 4** (Command 8 lock) need, so we run the locked **Vitest 4** (4.1.8) with no overrides. **pnpm** stays the
+`packageManager` pin (10.34.1), also Volta-managed as the default tool. The earlier interim (Vitest 3.2 + Vite 6 on
+Node 22.11) has been removed.
+- **Dev setup:** install Volta once (`winget install Volta.Volta`), then `volta install node@22.22.3` +
+  `volta install pnpm@10.34.1`; afterwards plain `pnpm`/`node` in the repo use the pinned versions automatically.
+- Note: a pre-existing **system Node 22.11** (`C:\Program Files\nodejs`) is shadowed by Volta when Volta's bin is
+  ahead on PATH (Volta `setup` handles this for new shells).
 
 ### Confirmed scope decisions (John, 2026-06-07)
 - **Foundations fold into Phase 1** as Objective 0 (one breakdown: empty repo → deployed site).
