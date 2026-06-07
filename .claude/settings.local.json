@@ -39,7 +39,14 @@
       "WebFetch(domain:www.htmhell.dev)",
       "WebFetch(domain:www.openapis.org)",
       "Skill(deep-research)",
-      "WebFetch(domain:turborepo.dev)"
+      "WebFetch(domain:turborepo.dev)",
+      "WebFetch(domain:testquality.com)",
+      "WebFetch(domain:www.promptfoo.dev)",
+      "WebFetch(domain:genai.owasp.org)",
+      "WebFetch(domain:www.turbogeek.co.uk)",
+      "WebFetch(domain:www.firecrawl.dev)",
+      "WebFetch(domain:baymard.com)",
+      "WebFetch(domain:www.trydeepteam.com)"
     ]
   }
 }
