@@ -37,7 +37,9 @@
       "WebFetch(domain:www.joshwcomeau.com)",
       "WebFetch(domain:www.nngroup.com)",
       "WebFetch(domain:www.htmhell.dev)",
-      "WebFetch(domain:www.openapis.org)"
+      "WebFetch(domain:www.openapis.org)",
+      "Skill(deep-research)",
+      "WebFetch(domain:turborepo.dev)"
     ]
   }
 }
