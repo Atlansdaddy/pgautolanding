@@ -18,5 +18,17 @@
     "turbo": "^2.3.0",
     "typescript": "^5.7.0",
     "wrangler": "^4.0.0"
+  },
+  "pnpm": {
+    "//": "INTERIM: Node 22.11 < 22.12 required by Vite 7 / Vitest 4 (Command 8 lock). Pin Vite to 6 until Node is bumped to current 22 LTS, then drop this override and move to Vitest 4. See docs/COMMAND-11-PHASE-1-TASKS.md note.",
+    "overrides": {
+      "vite": "^6.3.0"
+    },
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "workerd",
+      "sharp",
+      "style-dictionary"
+    ]
   }
 }

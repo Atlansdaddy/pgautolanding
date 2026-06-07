@@ -1,0 +1,11 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "inputs": ["tokens/**", "build-tokens.mjs"],
+      "outputs": ["dist/**"]
+    },
+    "typecheck": { "dependsOn": ["build"] },
+    "test": { "dependsOn": ["build"] }
+  }
+}

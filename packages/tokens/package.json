@@ -1,0 +1,23 @@
+{
+  "name": "@pg/tokens",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "PG Auto design tokens — DTCG source → Style Dictionary → CSS vars (marketing) + TS theme (portals).",
+  "exports": {
+    ".": "./dist/theme.ts",
+    "./css": "./dist/tokens.css"
+  },
+  "files": ["dist", "tokens"],
+  "scripts": {
+    "build": "node build-tokens.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "style-dictionary": "^4.4.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.2.0"
+  }
+}

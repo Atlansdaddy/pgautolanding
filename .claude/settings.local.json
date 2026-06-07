@@ -54,7 +54,17 @@
       "Bash(pnpm build *)",
       "Bash(pnpm typecheck *)",
       "Bash(pnpm lint *)",
-      "Bash(pnpm test *)"
+      "Bash(pnpm test *)",
+      "Bash(pnpm --filter @pg/tokens build)",
+      "Bash(nvm version *)",
+      "Bash(echo \"nvm: $\\(nvm version 2>&1\\)\")",
+      "Bash(fnm --version)",
+      "Bash(echo \"fnm: $\\(fnm --version 2>&1\\)\")",
+      "Bash(volta --version)",
+      "PowerShell($nvm = Get-Command nvm -ErrorAction SilentlyContinue; if \\($nvm\\) { \"nvm found: $\\($nvm.Source\\)\"; nvm list } else { \"nvm NOT installed\" }; \"winget: \" + \\(\\(Get-Command winget -ErrorAction SilentlyContinue\\).Source\\))",
+      "PowerShell(nvm *)",
+      "Bash(pnpm --filter @pg/tokens typecheck)",
+      "Bash(pnpm --filter @pg/tokens test)"
     ]
   }
 }

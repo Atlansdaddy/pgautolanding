@@ -49,6 +49,13 @@ material into the locked architecture and standards. We **keep its character** (
 reveals, 3D explorer + `#ixlist`, progress bar, reduced-motion), **tune** banners + reveal timing, and **swap**
 images/fonts/3D to locked performance standards (Command 5 §A). We do **not** restyle it into a generic template.
 
+### ⚠️ Build-environment note (surfaced at T0.2, 2026-06-07)
+Local Node is **22.11.0**; Vite 7 / **Vitest 4** (Command 8 lock) require **Node ≥22.12**. To keep the rail moving
+without risking the system Node, the toolchain runs an **interim pin: Vitest 3.2 + Vite 6** (works on 22.11) via a
+root `pnpm.overrides` (`vite: ^6.3.0`). **Action for John (non-blocking):** bump Node to current 22 LTS (e.g.
+`nvm install 22.20.0 && nvm use 22.20.0`, or winget Node LTS), then drop the override and move `vitest` to `^4` —
+a one-line change. Until then we are *behind* the locked Vitest 4 by intent, flagged here.
+
 ### Confirmed scope decisions (John, 2026-06-07)
 - **Foundations fold into Phase 1** as Objective 0 (one breakdown: empty repo → deployed site).
 - **svc-leads included (minimal)** — the "Request a Quote" CTA works on launch (Objective 6).

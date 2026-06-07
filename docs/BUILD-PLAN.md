@@ -7,8 +7,10 @@
 
 > ## ▶️ RESUME HERE (updated 2026-06-07)
 > **Commands 0–11 ✅ LOCKED.** **Phase 1 BUILD IN PROGRESS** per
-> [COMMAND-11-PHASE-1-TASKS.md](./COMMAND-11-PHASE-1-TASKS.md) (approved 2026-06-07; D1–D3 resolved). **Current task:
-> O0/T0.1 — monorepo scaffold** (pnpm 10 + Turborepo; apps/services/packages). Build order = O0 Foundations → O1 Astro
+> [COMMAND-11-PHASE-1-TASKS.md](./COMMAND-11-PHASE-1-TASKS.md) (approved 2026-06-07; D1–D3 resolved). **Done: T0.1
+> monorepo scaffold · T0.2 token pipeline. Current task: O0/T0.3 — CI green-skeleton** (GitHub Actions: ESLint flat +
+> Prettier + Spectral, Turborepo `--affected` lint→typecheck→test→build). ⚠️ Node 22.11 < 22.12 → interim Vitest 3.2
+> + Vite 6 override until John bumps Node (then Vitest 4). Build order = O0 Foundations → O1 Astro
 > app → O2 components → O3 home → O4 interior (incl. 12 metros) → O5 islands → O6 lead capture (form + svc-leads on
 > R2+email) → O7 release gate. **Tests-first per task; stop for review after each task.** **Pending from John
 > (non-blocking, each due at its task):** header **phone number** (T2.1) · lead **recipient + email provider** (T6.2)
@@ -60,6 +62,8 @@ adversarial gate expanded. Business-observability command was considered and dec
   Turborepo, `apps/`·`services/`·`packages/`, shared `tsconfig.base.json`, LF `.gitattributes`, green empty graph.
 - [ ] **CI/CD skeleton** — lint + typecheck + test + build + deploy gates wired (empty-but-green)
   before feature code. Nothing deploys by hand.
+- [x] **Design-token pipeline** (T0.2, 2026-06-07): `packages/tokens` — DTCG source → Style Dictionary → CSS vars
+  (`dist/tokens.css`) + TS theme (`dist/theme.ts`); exact Command 0 palette; 6 Vitest tests + snapshot green.
 - [ ] **Shared-types codegen path** proven (OpenAPI / ts-rs across Rust↔TS) with one trivial
   end-to-end type.
 - [ ] **Logging + error-handling baseline** chosen (Workers Logs / Tail / Analytics Engine + external

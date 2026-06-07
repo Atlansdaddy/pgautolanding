@@ -1,0 +1,33 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`@pg/tokens — generated CSS custom properties > matches the locked snapshot 1`] = `
+"/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --pg-color-pg-blue: #2d8fcc; /** PG Blue — primary brand color */
+  --pg-color-pg-navy: #1a1a2e; /** PG Dark Navy — structure/dark */
+  --pg-color-action-orange: #ff6b35; /** Action Orange — CTA/focal only (~10%); never backgrounds or body text (contrast) */
+  --pg-color-pg-sky: #e8f4fd; /** PG Sky — light subtle surface */
+  --pg-color-charcoal: #333333; /** Charcoal — default body text */
+  --pg-color-white: #ffffff; /** White — default surface */
+  --pg-font-family-montserrat: Montserrat, system-ui, sans-serif; /** Display font (self-hosted WOFF2; SEO/GEO §70) */
+  --pg-font-family-open-sans: 'Open Sans', system-ui, sans-serif; /** Body font (self-hosted WOFF2) */
+  --pg-font-display: var(--pg-font-family-montserrat); /** Headings, eyebrow labels */
+  --pg-font-body: var(--pg-font-family-open-sans); /** Body copy */
+  --pg-brand-primary: var(--pg-color-pg-blue); /** Primary brand — links, primary UI */
+  --pg-brand-dark: var(--pg-color-pg-navy); /** Dark structure — headers, footers */
+  --pg-action: var(--pg-color-action-orange); /** CTA/focal accent (~10% rule); NOT for backgrounds or body text */
+  --pg-surface-default: var(--pg-color-white); /** Default page surface */
+  --pg-surface-subtle: var(--pg-color-pg-sky); /** Subtle/alternate surface */
+  --pg-text-default: var(--pg-color-charcoal); /** Default body text */
+  --pg-text-on-brand: var(--pg-color-white); /** Text on dark/brand fills */
+  --pg-cta-primary-background: var(--pg-action); /** Primary CTA fill (Request a Quote) */
+  --pg-cta-primary-text: var(--pg-text-on-brand); /** Primary CTA label */
+  --pg-header-background: var(--pg-surface-default); /** Sticky nav surface (light) */
+  --pg-header-text: var(--pg-text-default); /** Nav text */
+  --pg-eyebrow-text: var(--pg-action); /** Editorial eyebrow label accent */
+}
+"
+`;
