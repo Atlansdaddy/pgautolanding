@@ -1,7 +1,9 @@
-# Command 9 — DevOps, Logging & CI/CD Pipeline (PROPOSAL for review)
+# Command 9 — DevOps, Logging & CI/CD Pipeline (✅ APPROVED & LOCKED 2026-06-06)
 
-> **STATUS: PROPOSAL — NOT APPROVED.** Automates enforcement of the Command 8 test rail + Command 3 security; nothing
-> ships by hand. **U1:** verified against live June 2026 tooling (Turborepo `--affected`, Wrangler gradual deployments/
+> **STATUS: ✅ APPROVED 2026-06-06 (John).** Governs Command 10 + all build phases. **Decisions:** ESLint flat +
+> Prettier + Spectral · gradual deploy `@10→@50→@100` + rollback · **OTel tracing DEFERRED** (logs + Analytics Engine
+> first; add selectively — tracing billable since 2026-03-01). Automates enforcement of the Command 8 test rail +
+> Command 3 security; nothing ships by hand. **U1:** verified against live June 2026 tooling (Turborepo `--affected`, Wrangler gradual deployments/
 > rollback, Workers Logs GA, OTel-on-Workers, Hono `onError`, RFC 9457) — cited in notes. Reserves the mandatory
 > pre-deploy **adversarial gate** (Command 10).
 
@@ -72,11 +74,11 @@ makes everything look changed). Parallel matrix across packages; shard Playwrigh
    reviewers / manual approval) before `wrangler versions deploy`.
 4. Gradual rollout `@10→@50→@100`; `wrangler rollback` if metrics regress. **Nothing reaches prod by hand.**
 
-## J. Decisions for your review
-1. **Lint/format:** ESLint flat + Prettier + Spectral (Biome optional for speed) — confirm? *(Recommend yes.)*
-2. **OTel tracing:** **defer** (logs + Analytics Engine first; add tracing selectively when needed) vs adopt full
-   distributed tracing now (billable)? *(Recommend defer — right-sized for current scale.)*
-3. **Gradual deployments** (`@10→@50→@100`) as the default for the 8 services — confirm? *(Recommend yes.)*
+## J. Decisions — ✅ RESOLVED 2026-06-06
+1. **Lint/format — ✅ ESLint flat + Prettier + Spectral** (Biome optional later for format speed).
+2. **OTel tracing — ✅ DEFERRED** (Workers Logs + Analytics Engine now; add OTel selectively when debugging a
+   distributed issue — avoids the per-event tracing bill at current scale).
+3. **Gradual deployments — ✅ `@10→@50→@100` + rollback** as the default for the 8 services.
 
 ## K. Definition of Complete (U2)
 Done when: lint/static-analysis config ✓ · CI pipeline (affected, ordered, required gate) ✓ · CD (versions/gradual/

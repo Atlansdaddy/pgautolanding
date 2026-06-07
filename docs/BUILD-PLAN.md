@@ -19,7 +19,8 @@ adversarial gate expanded. Business-observability command was considered and dec
 - **Command 6 — API Contract & Docs** → [x] **✅ LOCKED 2026-06-05**: [COMMAND-6-API.md](./COMMAND-6-API.md) (OpenAPI 3.1 · RFC 9457 errors · camelCase · /v1/ · cursor pagination · Idempotency-Key · 8 services incl. svc-leads).
 - **Command 7 — Data Architecture** → [x] **✅ LOCKED 2026-06-05**: [COMMAND-7-DATA.md](./COMMAND-7-DATA.md) (canonical schema centered on **dash cam installs** · units+install_records+install_events · JSONB type-specific attrs · config-toggleable events · multi-tenant RLS · PostGIS · drizzle migrations).
 - **Command 8 — Test Strategy & Build Rails** → [x] **✅ LOCKED 2026-06-06**: [COMMAND-8-TESTS.md](./COMMAND-8-TESTS.md) (Vitest4 + workers-pool · Playwright · pgTAP RLS · **Preflight** + OSS security set · patch-coverage gate · SDD tests-as-rail · Neon-branch test DBs).
-- **Command 9 — DevOps, Logging & CI/CD** → ⏭️ **NEXT**.
+- **Command 9 — DevOps, Logging & CI/CD** → [x] **✅ LOCKED 2026-06-06**: [COMMAND-9-DEVOPS.md](./COMMAND-9-DEVOPS.md) (Turborepo affected CI · Wrangler gradual deploy+rollback · scoped API token · Workers Logs+trace IDs+Logpush · Hono onError→RFC 9457 · OTel deferred).
+- **Command 10 — Adversarial Hardening Gate** → ⏭️ **NEXT**.
 - **Command 2 — Architecture Blueprint** — service map, stacks-per-service, DRY/shared contracts, security touchpoints.
 - **Command 3 — Security Design** — threat model per surface, authN/Z, secrets, controls matrix, residual risk.
 - **Command 4 — Messaging & Content Architecture** 🆕 *(inserted before Design)* — homepage copy, proof
