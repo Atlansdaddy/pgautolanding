@@ -13,3 +13,6 @@ docs/**
 index.html
 build-your-protection.html
 assets/**
+
+# .astro formatting wired in T1.1 (needs prettier-plugin-astro)
+**/*.astro

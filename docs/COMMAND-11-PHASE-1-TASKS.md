@@ -499,6 +499,13 @@ Levels: **L1 Surface = marketing site · L2 Service = svc-leads · L3 Component 
   `LeadStore` interface; DB + backfill deferred to its own phase.
 
 ### Still pending from John (non-blocking until their task)
+- ⏳ **Cloudflare deploy credentials (T0.4)** — code-complete; live preview/deploy/rollback verification waits on two
+  **GitHub repo secrets**:
+  1. `CLOUDFLARE_API_TOKEN` — create at **dash.cloudflare.com → My Profile → API Tokens → Create Token → "Edit
+     Cloudflare Workers"** template (scoped: Account · Workers Scripts:Edit + Workers Static Assets; restrict to the
+     PG account). 2. `CLOUDFLARE_ACCOUNT_ID` — from the Workers & Pages overview page.
+  Add via `gh secret set CLOUDFLARE_API_TOKEN` / `gh secret set CLOUDFLARE_ACCOUNT_ID` (gh now installed) or repo
+  **Settings → Secrets and variables → Actions**. Then a PR shows a preview URL; a push to main deploys.
 - ⏳ **Header phone number** — real PG tap-to-call (placeholder until provided, T2.1).
 - ⏳ **Lead recipient + email provider** — address leads go to + transactional-email service/API key (needed at T6.2).
 - ⏳ **Regional photos** — real, anonymized per-metro install photos (needed to fill T4.3 image slots, post-launch ok).

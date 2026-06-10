@@ -1,0 +1,71 @@
+name: Deploy (marketing)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/marketing/**'
+      - 'packages/tokens/**'
+      - '.github/workflows/deploy.yml'
+  pull_request:
+    paths:
+      - 'apps/marketing/**'
+      - 'packages/tokens/**'
+
+concurrency:
+  group: deploy-marketing-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  TURBO_TELEMETRY_DISABLED: 1
+
+jobs:
+  # PR → upload a new Worker version (does NOT take production traffic) and surface its
+  # preview URL. This is the per-PR preview from Command 9 / T0.4.
+  preview:
+    if: github.event_name == 'pull_request'
+    name: Preview version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec turbo run build --filter=@pg/marketing
+      - name: Upload preview version
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: apps/marketing
+          command: versions upload
+
+  # Push to main → production deploy.
+  # T7 release-gate hardening (Command 9/10) layers on top of this:
+  #   - `environment: production` with required reviewers = the adversarial-gate manual approval
+  #   - gradual rollout @10 → @50 → @100 via `wrangler versions deploy`
+  # For the T0.4 skeleton this is a straight pipeline deploy (no hand deploys).
+  deploy:
+    if: github.event_name == 'push'
+    name: Deploy to production
+    runs-on: ubuntu-latest
+    # environment: production   # enabled at T7 with the Command 10 gate as the approval rule
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec turbo run build --filter=@pg/marketing
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: apps/marketing
+          command: deploy

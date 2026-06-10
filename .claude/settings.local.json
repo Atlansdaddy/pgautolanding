@@ -69,7 +69,8 @@
       "PowerShell(Get-ChildItem *)",
       "PowerShell($volta = \"$env:LOCALAPPDATA\\\\Volta\\\\bin\\\\volta.exe\"; Set-Location \"C:\\\\Users\\\\jviru\\\\PGAuto\"; & $volta --version; \"--- pinning node@22 ---\"; & $volta pin node@22; \"--- pinning pnpm@10 ---\"; & $volta pin pnpm@10)",
       "PowerShell(winget list *)",
-      "PowerShell($volta = \"C:\\\\Program Files\\\\Volta\\\\volta.exe\"; Set-Location \"C:\\\\Users\\\\jviru\\\\PGAuto\"; \"volta: \" + \\(& $volta --version\\); \"--- pin node@22 ---\"; & $volta pin node@22; \"--- pin pnpm@10 ---\"; & $volta pin pnpm@10)"
+      "PowerShell($volta = \"C:\\\\Program Files\\\\Volta\\\\volta.exe\"; Set-Location \"C:\\\\Users\\\\jviru\\\\PGAuto\"; \"volta: \" + \\(& $volta --version\\); \"--- pin node@22 ---\"; & $volta pin node@22; \"--- pin pnpm@10 ---\"; & $volta pin pnpm@10)",
+      "PowerShell(winget install *)"
     ]
   }
 }

@@ -8,8 +8,9 @@
 > ## ▶️ RESUME HERE (updated 2026-06-07)
 > **Commands 0–11 ✅ LOCKED.** **Phase 1 BUILD IN PROGRESS** per
 > [COMMAND-11-PHASE-1-TASKS.md](./COMMAND-11-PHASE-1-TASKS.md) (approved 2026-06-07; D1–D3 resolved). **Done: T0.1
-> scaffold · T0.2 tokens · T0.3 CI green-skeleton. Current task: O0/T0.4 — CD pipeline** (Wrangler versions →
-> per-PR preview → gradual deploy + rollback to Workers Static Assets; scoped CF API token). **Toolchain pinned via Volta** (Node 22.22.3
+> scaffold · T0.2 tokens · T0.3 CI · T0.4 CD (code-complete, ⏳ awaiting John's CF token for live deploy verify).
+> Next unblocked: O0/T0.6 test harness** (Vitest workers-pool · Playwright · axe · Lighthouse) + T0.5 secrets.
+> Minimal Astro app seeded at `apps/marketing`; full i18n/islands/structure = T1.1. **Toolchain pinned via Volta** (Node 22.22.3
 > in `package.json` volta field + pnpm 10.34.1); locked **Vitest 4** active. In-session shells: prepend
 > `/c/Program Files/Volta` to PATH so plain `pnpm`/`node` use the pinned versions. Build order = O0 Foundations → O1 Astro
 > app → O2 components → O3 home → O4 interior (incl. 12 metros) → O5 islands → O6 lead capture (form + svc-leads on
@@ -61,10 +62,11 @@ adversarial gate expanded. Business-observability command was considered and dec
 - [x] Landing-page preview shipped to GitHub (`Atlansdaddy/pgautolanding`) + Cloudflare-ready
 - [x] **Repo & workspace topology decided** — monorepo (Command 2); **scaffolded 2026-06-07 (T0.1)**: pnpm 10 +
   Turborepo, `apps/`·`services/`·`packages/`, shared `tsconfig.base.json`, LF `.gitattributes`, green empty graph.
-- [~] **CI/CD skeleton** — **CI done (T0.3, 2026-06-07)**: `.github/workflows/ci.yml` (pnpm + Node-from-.nvmrc +
-  Turborepo `--affected` format:check→lint→typecheck→test→build); ESLint 9 flat + Prettier + Spectral configs; green.
-  **CD (deploy gate) = T0.4 next.** Note: blocking branch-protection deferred (would conflict with the direct
-  push-to-main convention); CI runs on every push to main + PRs.
+- [~] **CI/CD skeleton** — **CI done (T0.3)** + **CD code-complete (T0.4, 2026-06-07)**: `ci.yml` (format→lint→
+  typecheck→test→build, `--affected`) + `deploy.yml` (PR→preview version, push→deploy to Workers Static Assets via
+  `cloudflare/wrangler-action`). Minimal Astro 6 app at `apps/marketing` builds + wrangler config validated (dry-run).
+  ⏳ **Live deploy/rollback verification BLOCKED on John's `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` GH
+  secrets** (instructions in COMMAND-11 doc). Blocking branch-protection deferred (push-to-main convention).
 - [x] **Design-token pipeline** (T0.2, 2026-06-07): `packages/tokens` — DTCG source → Style Dictionary → CSS vars
   (`dist/tokens.css`) + TS theme (`dist/theme.ts`); exact Command 0 palette; 6 Vitest tests + snapshot green.
 - [ ] **Shared-types codegen path** proven (OpenAPI / ts-rs across Rust↔TS) with one trivial

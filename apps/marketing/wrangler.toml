@@ -1,0 +1,15 @@
+name = "pg-marketing"
+compatibility_date = "2026-06-05"
+
+# Pure static site served from Astro's build output via Cloudflare Workers Static
+# Assets (NOT Pages — Command 2). No Worker script; just serve dist/.
+[assets]
+directory = "./dist"
+
+# Staging target — reserved for the Command 10 adversarial gate (staging-only)
+# before any production deploy.
+[env.staging]
+name = "pg-marketing-staging"
+
+[env.staging.assets]
+directory = "./dist"
