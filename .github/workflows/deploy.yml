@@ -1,6 +1,7 @@
 name: Deploy (marketing)
 
 on:
+  workflow_dispatch: {} # allow manual production deploys
   push:
     branches: [main]
     paths:
@@ -71,7 +72,7 @@ jobs:
   # For the T0.4 skeleton this is a straight pipeline deploy (no hand deploys).
   deploy:
     needs: guard
-    if: github.event_name == 'push' && needs.guard.outputs.ready == 'true'
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && needs.guard.outputs.ready == 'true'
     name: Deploy to production
     runs-on: ubuntu-latest
     # environment: production   # enabled at T7 with the Command 10 gate as the approval rule
